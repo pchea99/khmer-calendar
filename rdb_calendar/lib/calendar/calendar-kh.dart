@@ -100,12 +100,12 @@ class RDBCalendar{
 			s = "សីល";
 		}
 		sak = hsSak[sak].toString();
-		year = _convertToKhmerNum(year);
+		year = convertToKhmerNum(year);
 		month = hsMonth[month].toString();
 		animalYear = hsAnimalYear[animalYear].toString();
 		kr = kr.replaceAll("K", "កើត").replaceAll("R", "រោច");
 		int dt = int.parse(d);
-		d = _convertToKhmerNum(dt.toString());
+		d = convertToKhmerNum(dt.toString());
 //		khText = "ថ្ងៃ "+d + kr + s + " ខែ" + month +" ព.ស "+year +" ឆ្នាំ "+animalYear+" "+sak;
 
 		return {
@@ -123,7 +123,7 @@ class RDBCalendar{
 		return getWeekDayKH[num];
 	}
 
-	String _convertToKhmerNum(String src) {
+	String convertToKhmerNum(String src) {
 		return src
 			.replaceAll("0", "០")
 			.replaceAll("1", "១")

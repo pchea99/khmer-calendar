@@ -9,6 +9,7 @@ class RDBDate{
 	String sak;
 	String s;
 	String kr;
+	bool isHoliday;
 
 	RDBDate();
 
@@ -23,6 +24,7 @@ class RDBDate{
 		sak = other.sak;
 		s = other.s;
 		kr = other.kr;
+		isHoliday = other.isHoliday;
 	}
 
 	@override
