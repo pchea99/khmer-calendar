@@ -7,6 +7,7 @@ class AppBarView{
 	Widget buildAppBar({
 		BuildContext context,
 		String title,
+		bool isTitleCenter,
 		Widget action
 	}){
 		return AppBar(
@@ -16,8 +17,9 @@ class AppBarView{
 					fontSize: FontSize.headline,
 				)
 			),
+			centerTitle: isTitleCenter == null ? false : isTitleCenter,
 			actions: <Widget>[
-				action
+				action == null ? Container() : action
 			],
 		);
 	}

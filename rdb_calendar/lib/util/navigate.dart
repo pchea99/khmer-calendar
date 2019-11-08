@@ -32,4 +32,14 @@ class Navigate{
 			)
 		);
 	}
+
+	static void openDialog(BuildContext context, Widget routTo) {
+		Navigator.of(context).push(
+			new MaterialPageRoute(
+			builder: (BuildContext context) {
+				return routTo;
+			},
+			fullscreenDialog: true)
+		);
+	}
 }
