@@ -292,7 +292,7 @@ class _HomeState extends State<Home> {
 
 		if (_currentMM > 12) {
 			_currentMM = 1;
-			_currentYY++;
+//			_currentYY++;
 		}
 
 		_dateOfMM.clear();
@@ -306,7 +306,7 @@ class _HomeState extends State<Home> {
 
 		if (_currentMM < 1) {
 			_currentMM = 12;
-			_currentYY--;
+//			_currentYY--;
 		}
 
 		_dateOfMM.clear();
