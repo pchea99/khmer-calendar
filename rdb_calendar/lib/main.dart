@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rdb_calendar/res/string.dart';
-import 'package:rdb_calendar/ui/home.dart';
 import 'package:rdb_calendar/ui/splash.dart';
 
 void main() => runApp(MyApp());
