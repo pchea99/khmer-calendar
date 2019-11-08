@@ -174,12 +174,17 @@ class _HomeState extends State<Home> {
 		var entries = other.entries.toList()
 			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
 
-		return Column(
-			crossAxisAlignment: CrossAxisAlignment.start,
-			mainAxisAlignment: MainAxisAlignment.start,
-			children: entries.map((e)=>
-				_buildFooter(e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
-			).toList(),
+		return Container(
+			padding: EdgeInsets.only(
+				right: _currentMM == 7 ? 155.0 : _currentMM == 2 ? 25.0 : 0.0
+			),
+		  child: Column(
+		  	crossAxisAlignment: CrossAxisAlignment.start,
+		  	mainAxisAlignment: MainAxisAlignment.start,
+		  	children: entries.map((e)=>
+		  		_buildFooter(e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
+		  	).toList(),
+		  ),
 		);
 	}
 
@@ -217,12 +222,17 @@ class _HomeState extends State<Home> {
 		var entries = holiday.entries.toList()
 			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
 
-		return Column(
-			crossAxisAlignment: CrossAxisAlignment.start,
-			mainAxisAlignment: MainAxisAlignment.start,
-			children: entries.map((e) =>
-				_buildFooter(e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
-			).toList(),
+		return Container(
+			padding: EdgeInsets.only(
+				right: _currentMM == 3 ? 28.0 : _currentMM == 9 ? 22.0 : 0.0
+			),
+		  child: Column(
+		  	crossAxisAlignment: CrossAxisAlignment.start,
+		  	mainAxisAlignment: MainAxisAlignment.start,
+		  	children: entries.map((e) =>
+		  		_buildFooter(e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
+		  	).toList(),
+		  ),
 		);
 	}
 
