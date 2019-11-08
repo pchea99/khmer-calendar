@@ -86,8 +86,21 @@ class _HomeState extends State<Home> {
 						SizedBox(height: NumberRes.padding6),
 						_buildViewHeader(),
 						_buildBoxContent(),
-						_buildListOther(),
-						_buildListHoliday(),
+						SizedBox(height: NumberRes.padding6),
+						SingleChildScrollView(
+							scrollDirection: Axis.horizontal,
+						  child: Container(
+							  margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
+						    child: Column(
+							  crossAxisAlignment: CrossAxisAlignment.start,
+						    	mainAxisAlignment: MainAxisAlignment.start,
+						    	children: <Widget>[
+						    		_buildListOther(),
+						    		_buildListHoliday(),
+						    	],
+						    ),
+						  ),
+						),
 						SizedBox(height: NumberRes.padding12)
 					],
 				),
@@ -102,36 +115,30 @@ class _HomeState extends State<Home> {
 		}
 
 		return Column(
+			crossAxisAlignment: CrossAxisAlignment.start,
+			mainAxisAlignment: MainAxisAlignment.start,
 			children: other.keys.map((k)=>
 				_buildFooter(k, other[k]['kh'], other[k]['en'], ColorRes.blue)
 			).toList(),
 		);
 	}
 
-	Widget _buildFooter(String numDay, String textKh, String textEn, Color color){
-		return Container(
-			margin: EdgeInsets.only(
-				top: NumberRes.padding6,
-				left: NumberRes.padding12,
-				right: NumberRes.padding12
-			),
-		  child: Row(
-			  crossAxisAlignment: CrossAxisAlignment.start,
-			  mainAxisAlignment: MainAxisAlignment.start,
-		  	children: <Widget>[
-		  		_buildText(
-		  			numDay,
-		  			_textStyleList(color)
-		  		),
-		  		SizedBox(width: NumberRes.padding8),
-		  		Expanded(
-		  		  child: _buildText(
-		  		  	textKh +" / "+ textEn,
-		  		  	_textStyleList(color)
-		  		  ),
-		  		),
-		  	],
-		  ),
+	Widget _buildFooter(String numDay, String textKh, String textEn, Color color) {
+		return Row(
+			crossAxisAlignment: CrossAxisAlignment.start,
+			mainAxisAlignment: MainAxisAlignment.start,
+			children: <Widget>[
+				_buildText(
+					numDay,
+					_textStyleList(color)
+				),
+				SizedBox(width: NumberRes.padding8),
+				  _buildText(
+					  textKh +" / "+  textEn,
+					  _textStyleList(color)
+				  ),
+				SizedBox(width: NumberRes.width25),
+			],
 		);
 	}
 
@@ -148,10 +155,12 @@ class _HomeState extends State<Home> {
 			return Container();
 		}
 		var entries = holiday.entries.toList()
-			..sort((l, r)=>
-				l.value['index'].toString().compareTo(r.value['index'].toString()));
+			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
+
 		return Column(
-			children: entries.map((e)=>
+			crossAxisAlignment: CrossAxisAlignment.start,
+			mainAxisAlignment: MainAxisAlignment.start,
+			children: entries.map((e) =>
 				_buildFooter(e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
 			).toList(),
 		);
@@ -161,7 +170,9 @@ class _HomeState extends State<Home> {
 		return Row(
 			children: <Widget>[
 				_buildPreviousBtn(),
+				SizedBox(width: NumberRes.padding8),
 				_buildHeaderMMYY(),
+				SizedBox(width: NumberRes.padding8),
 				_buildNextBtn(),
 			],
 		);
@@ -170,7 +181,7 @@ class _HomeState extends State<Home> {
 	InkWell _buildNextBtn() {
 		return InkWell(
 			child: Container(
-				width: 35.0,
+				width: NumberRes.width45,
 				height: NumberRes.width45,
 				child: Icon(
 					Icons.arrow_forward_ios,
@@ -207,7 +218,7 @@ class _HomeState extends State<Home> {
 	InkWell _buildPreviousBtn() {
 		return InkWell(
 			child: Container(
-				width: 35.0,
+				width: NumberRes.width45,
 				height: NumberRes.width45,
 				child: Icon(
 					Icons.arrow_back_ios,

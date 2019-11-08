@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rdb_calendar/main.dart';
 import 'package:rdb_calendar/model/month.dart';
 
 class ServiceFirestore {
