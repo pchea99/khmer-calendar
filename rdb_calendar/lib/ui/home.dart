@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
@@ -170,12 +171,14 @@ class _HomeState extends State<Home> {
 		if(other == null || other.isEmpty){
 			return Container();
 		}
+		var entries = other.entries.toList()
+			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
 
 		return Column(
 			crossAxisAlignment: CrossAxisAlignment.start,
 			mainAxisAlignment: MainAxisAlignment.start,
-			children: other.keys.map((k)=>
-				_buildFooter(k, other[k]['kh'], other[k]['en'], ColorRes.blue)
+			children: entries.map((e)=>
+				_buildFooter(e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
 			).toList(),
 		);
 	}
@@ -292,7 +295,7 @@ class _HomeState extends State<Home> {
 
 		if (_currentMM > 12) {
 			_currentMM = 1;
-//			_currentYY++;
+			_currentYY++;
 		}
 
 		_dateOfMM.clear();
@@ -306,7 +309,7 @@ class _HomeState extends State<Home> {
 
 		if (_currentMM < 1) {
 			_currentMM = 12;
-//			_currentYY--;
+			_currentYY--;
 		}
 
 		_dateOfMM.clear();
