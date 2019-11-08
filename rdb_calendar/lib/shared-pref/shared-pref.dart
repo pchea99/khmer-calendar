@@ -17,8 +17,12 @@ class SharedPref{
 	}
 
 	static Month getPref(){
-		Map decode = json.decode(_sharedPref.get(StringField.keySharedPref));
-		Month month = Month.fromJson(decode);
-		return month;
+		try {
+			Map decode = json.decode(_sharedPref.get(StringField.keySharedPref));
+			Month month = Month.fromJson(decode);
+			return month;
+		}catch(e){
+			return null;
+		}
 	}
 }

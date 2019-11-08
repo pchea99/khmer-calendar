@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
 	int _currentYY;
 	int _countWeek;
 	int _firstWeek;
+	int _currentIndex;
 	bool _isLoading;
 
 	@override
@@ -38,6 +39,7 @@ class _HomeState extends State<Home> {
 		_dateOfMM = new Map();
 		_isLoading = true;
 		_countWeek = 1;
+		_currentIndex = 0;
 		DateTime now = new DateTime.now();
 		_currentMM = now.month;
 		_currentYY = now.year;
@@ -80,6 +82,28 @@ class _HomeState extends State<Home> {
 				),
 			),
 			body: _buildBody(),
+			bottomNavigationBar: BottomNavigationBar(
+				currentIndex: _currentIndex,
+				onTap: (int index) {
+					setState(() {
+						_currentIndex = index;
+					});
+				},// this will be set when a new tab is tapped
+				items: [
+					BottomNavigationBarItem(
+						icon: new Icon(Icons.home),
+						title: new Text('ទំព័រដើម'),
+					),
+					BottomNavigationBarItem(
+						icon: new Icon(Icons.people),
+						title: new Text('អំពីពួកយើង'),
+					),
+					BottomNavigationBarItem(
+						icon: Icon(Icons.contacts),
+						title: Text('ទំនាក់ទំនង')
+					)
+				],
+			),
 		);
 	}
 
