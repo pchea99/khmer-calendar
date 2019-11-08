@@ -18,6 +18,8 @@ import 'package:rdb_calendar/util/navigate.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
 import 'package:rdb_calendar/widget/text-view.dart';
 
+import 'contact-us.dart';
+
 class Home extends StatefulWidget {
 	@override
 	_HomeState createState() => _HomeState();
@@ -87,15 +89,13 @@ class _HomeState extends State<Home> {
 			bottomNavigationBar: BottomNavigationBar(
 				currentIndex: _currentIndex,
 				onTap: (int index) {
-					setState(() {
-						_currentIndex = index;
-					});
+					_currentIndex = index;
+					_onSetState();
 					if(index == 1){
 						Navigate.openDialog(context, AboutUs());
 					}else if(index == 2){
-						Navigate.openDialog(context, AboutUs());
+						Navigate.openDialog(context, ContactUs());
 					}
-
 					_setSeletedDefault();
 				},// this will be set when a new tab is tapped
 				items: [
