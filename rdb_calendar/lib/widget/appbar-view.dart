@@ -13,7 +13,7 @@ class AppBarView{
 			title: TextView().buildText(
 				text: title,
 				style: TextStyle(
-					fontSize: FontSize.headline
+					fontSize: FontSize.headline,
 				)
 			),
 			actions: <Widget>[
