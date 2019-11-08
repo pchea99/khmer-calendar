@@ -1,14 +1,16 @@
+import 'package:rdb_calendar/util/string-field.dart';
+
 class Month{
-	Map<String, Map> month;
+	Map<String, Map> holiday;
 	Map<String, Map> other;
 
 	Month(){
-		month = new Map();
+		holiday = new Map();
 		other = new Map();
 	}
 
 	Map getHoliday(String mName){
-		return month[mName.toLowerCase()];
+		return holiday[mName.toLowerCase()];
 	}
 
 	bool isHoliday(String mName, String numDay){
@@ -25,7 +27,7 @@ class Month{
 
 	bool _isMHasHoliday(String mName){
 		try{
-			return !month[mName.toLowerCase()].keys.contains("no");
+			return !holiday[mName.toLowerCase()].keys.contains("no");
 		}catch(e){
 			return false;
 		}
@@ -33,7 +35,7 @@ class Month{
 
 	List<String> _getNumDayHoliday(String mName){
 		Set<String> numDays = new Set();
-		month[mName.toLowerCase()].keys.forEach((k){
+		holiday[mName.toLowerCase()].keys.forEach((k){
 			k.toString().split("-").forEach((text){
 				numDays.add(text);
 			});
@@ -42,8 +44,22 @@ class Month{
 		return numDays.toList();
 	}
 
+	Month.fromJson(Map data){
+		holiday = Map.from(data[StringField.holiday]);
+		other = Map.from(data[StringField.other]);
+	}
+
+	Map toJson(){
+
+
+		return{
+			StringField.holiday: holiday,
+			StringField.other: other,
+		};
+	}
+
 	@override
 	String toString() {
-		return 'Month{month: $month}';
+		return 'Month{month: $holiday, other: $other}';
 	}
 }

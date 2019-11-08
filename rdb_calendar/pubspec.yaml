@@ -27,6 +27,8 @@ dependencies:
   intl: 0.16.0
   sprintf: ^4.0.0
   cloud_firestore: ^0.12.9+6
+  connectivity: ^0.4.5+2
+  shared_preferences: ^0.5.4+3
 
 dev_dependencies:
   flutter_test:

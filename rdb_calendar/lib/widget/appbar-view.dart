@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/widget/text-view.dart';
 
 class AppBarView{
@@ -11,7 +12,9 @@ class AppBarView{
 		return AppBar(
 			title: TextView().buildText(
 				text: title,
-				style: Theme.of(context).textTheme.title
+				style: TextStyle(
+					fontSize: FontSize.headline
+				)
 			),
 			actions: <Widget>[
 				action

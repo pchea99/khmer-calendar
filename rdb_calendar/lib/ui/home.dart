@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:rdb_calendar/calendar/calendar-kh.dart';
 import 'package:rdb_calendar/core/config.dart';
@@ -8,6 +11,8 @@ import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/res/string.dart';
 import 'package:rdb_calendar/service/service.dart';
+import 'package:rdb_calendar/shared-pref/shared-pref.dart';
+import 'package:rdb_calendar/util/logging.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
 import 'package:rdb_calendar/widget/text-view.dart';
 
@@ -17,6 +22,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+	StreamSubscription<ConnectivityResult> _subscription;
 	Map<int, Map<int, RDBDate>> _dateOfMM;
 	RDBCalendar _rdbCalendar;
 	Month _month;
@@ -35,10 +41,28 @@ class _HomeState extends State<Home> {
 		DateTime now = new DateTime.now();
 		_currentMM = now.month;
 		_currentYY = now.year;
-		ServiceFirestore().getMonth().then((data){
-			_month = data;
-			_generateCalendarKh();
+		_month = SharedPref.getPref();
+		_generateCalendarKh();
+		_subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+			if(result != null){
+				_getMonth();
+			}
 		});
+	}
+
+	void _getMonth() {
+	  ServiceFS().getMonth().then((data){
+	  	SharedPref.setPref(data);
+	  }).catchError((e){
+	  	Logging.logWarning(e.toString());
+	  });
+	}
+
+
+	@override
+	void dispose() {
+		_subscription.cancel();
+		super.dispose();
 	}
 
 	@override
@@ -150,7 +174,7 @@ class _HomeState extends State<Home> {
 	}
 
 	Widget _buildListHoliday(){
-		var holiday = _month.month[getMonthEn[_currentMM].toString().toLowerCase()];
+		var holiday = _month.holiday[getMonthEn[_currentMM].toString().toLowerCase()];
 		if(holiday == null || holiday.isEmpty){
 			return Container();
 		}
