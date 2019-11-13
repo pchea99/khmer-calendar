@@ -30,4 +30,8 @@ class ServiceFS {
 
 		return completer.future;
 	}
+
+	void createData(String key, Map data){
+		Firestore.instance.document('months/' + key).setData(Map.from(data));
+	}
 }

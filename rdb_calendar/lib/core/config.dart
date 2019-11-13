@@ -1,3 +1,5 @@
+bool isGenerate = true;
+
 Map getHashAnimalYear = {
 	"01": "ជូត",
 	"02": "ឆ្លូវ",

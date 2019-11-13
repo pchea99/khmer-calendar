@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rdb_calendar/core/config.dart';
 import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/service/service.dart';
@@ -6,6 +7,7 @@ import 'package:rdb_calendar/shared-pref/shared-pref.dart';
 import 'package:rdb_calendar/ui/home.dart';
 import 'package:rdb_calendar/ui/no-connection.dart';
 import 'package:rdb_calendar/util/check-connection.dart';
+import 'package:rdb_calendar/util/generate-data.dart';
 import 'package:rdb_calendar/util/logging.dart';
 import 'package:rdb_calendar/util/navigate.dart';
 
@@ -20,6 +22,9 @@ class _SplashState extends State<Splash> {
 	void initState() {
 		super.initState();
 		_init();
+		if(isGenerate) {
+			GenerateData().createData();
+		}
 	}
 
   @override
