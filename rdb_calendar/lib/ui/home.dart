@@ -16,6 +16,8 @@ import 'package:rdb_calendar/ui/about-us.dart';
 import 'package:rdb_calendar/util/logging.dart';
 import 'package:rdb_calendar/util/navigate.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
+import 'package:rdb_calendar/widget/footer.dart';
+import 'package:rdb_calendar/widget/header-mm-yy.dart';
 import 'package:rdb_calendar/widget/text-view.dart';
 
 import 'contact-us.dart';
@@ -146,20 +148,7 @@ class _HomeState extends State<Home> {
 			    			_buildViewHeader(),
 			    			_buildBoxContent(),
 			    			SizedBox(height: NumberRes.padding6),
-			    			SingleChildScrollView(
-			    				scrollDirection: Axis.horizontal,
-			    			  child: Container(
-			    				  margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
-			    			    child: Column(
-			    				  crossAxisAlignment: CrossAxisAlignment.start,
-			    			    	mainAxisAlignment: MainAxisAlignment.start,
-			    			    	children: <Widget>[
-			    			    		_buildListOther(),
-			    			    		_buildListHoliday(),
-			    			    	],
-			    			    ),
-			    			  ),
-			    			),
+			    			Footer().buildFooter(_month, _currentMM),
 			    			SizedBox(height: NumberRes.padding12)
 			    		],
 			    	),
@@ -169,82 +158,12 @@ class _HomeState extends State<Home> {
 		);
 	}
 
-	Widget _buildListOther(){
-		var other = _month.other[getMonthEn[_currentMM].toString().toLowerCase()];
-		if(other == null || other.isEmpty){
-			return Container();
-		}
-		var entries = other.entries.toList()
-			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
-
-		return Container(
-			padding: EdgeInsets.only(
-				right: _currentMM == 7 ? 155.0 : _currentMM == 2 ? 25.0 : 0.0
-			),
-		  child: Column(
-		  	crossAxisAlignment: CrossAxisAlignment.start,
-		  	mainAxisAlignment: MainAxisAlignment.start,
-		  	children: entries.map((e)=>
-		  		_buildFooter(e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
-		  	).toList(),
-		  ),
-		);
-	}
-
-	Widget _buildFooter(String numDay, String textKh, String textEn, Color color) {
-		return Row(
-			crossAxisAlignment: CrossAxisAlignment.start,
-			mainAxisAlignment: MainAxisAlignment.start,
-			children: <Widget>[
-				_buildText(
-					numDay,
-					_textStyleList(color)
-				),
-				SizedBox(width: NumberRes.padding8),
-				  _buildText(
-					  textKh +" / "+  textEn,
-					  _textStyleList(color)
-				  ),
-				SizedBox(width: NumberRes.width25),
-			],
-		);
-	}
-
-	TextStyle _textStyleList(Color color) {
-		return TextStyle(
-			fontSize: FontSize.body1,
-			color: color
-		);
-	}
-
-	Widget _buildListHoliday(){
-		var holiday = _month.holiday[getMonthEn[_currentMM].toString().toLowerCase()];
-		if(holiday == null || holiday.isEmpty){
-			return Container();
-		}
-		var entries = holiday.entries.toList()
-			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
-
-		return Container(
-			padding: EdgeInsets.only(
-				right: _currentMM == 3 ? 28.0 : _currentMM == 9 ? 22.0 : 0.0
-			),
-		  child: Column(
-		  	crossAxisAlignment: CrossAxisAlignment.start,
-		  	mainAxisAlignment: MainAxisAlignment.start,
-		  	children: entries.map((e) =>
-		  		_buildFooter(e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
-		  	).toList(),
-		  ),
-		);
-	}
-
 	Widget _buildHeaderDate() {
 		return Row(
 			children: <Widget>[
 				_buildPreviousBtn(),
 				SizedBox(width: NumberRes.padding8),
-				_buildHeaderMMYY(),
+				HeaderMMYY().buildHeaderMMYY(_dateOfMM, _firstWeek, _countWeek),
 				SizedBox(width: NumberRes.padding8),
 				_buildNextBtn(),
 			],
@@ -262,29 +181,6 @@ class _HomeState extends State<Home> {
 				),
 			),
 			onTap: _onNext,
-		);
-	}
-
-	Expanded _buildHeaderMMYY() {
-		return Expanded(
-			child: Column(
-				children: <Widget>[
-					Row(
-						mainAxisAlignment: MainAxisAlignment.spaceBetween,
-						children: <Widget>[
-							_buildTextMMKh(),
-							_buildTextMMEn(),
-						],
-					),
-					Row(
-						mainAxisAlignment: MainAxisAlignment.spaceBetween,
-						children: <Widget>[
-							_buildTextYYKh(),
-							_buildTextMMYYEn(),
-						],
-					),
-				],
-			),
 		);
 	}
 
@@ -333,100 +229,6 @@ class _HomeState extends State<Home> {
 	void _setLoading(bool isLoading) {
 		_isLoading = isLoading;
 		_onSetState();
-	}
-
-	Widget _buildTextMMYYEn() {
-		return Row(
-			mainAxisAlignment: MainAxisAlignment.start,
-			children: <Widget>[
-				_buildText(
-					getMonthEn[_dateOfMM[2][1].mmEn],
-					TextStyle(
-						fontSize: FontSize.body1,
-						fontWeight: FontWeight.w500
-					)
-				),
-				SizedBox(width: NumberRes.padding4),
-				_buildText(
-					_dateOfMM[2][1].yyEn.toString(),
-					TextStyle(
-						fontSize: FontSize.body1,
-						fontWeight: FontWeight.w500
-					)
-				),
-			],
-		);
-	}
-
-	Widget _buildTextYYKh() {
-		return Container(
-			margin: EdgeInsets.only(right: NumberRes.padding12),
-			child: _buildText(
-				"ព.ស​ "+ _dateOfMM[_countWeek][1].yyKh,
-				TextStyle(
-					fontSize: FontSize.body1,
-					fontWeight: FontWeight.w500
-				)
-			),
-		);
-	}
-
-	Widget _buildTextMMEn() {
-		return _buildText(
-			getMonthKh[_dateOfMM[2][1].mmEn],
-			TextStyle(
-				fontSize: FontSize.subtitle,
-				fontWeight: FontWeight.w500
-			)
-		);
-	}
-
-	Widget _buildTextMMKh() {
-		return _buildText(
-			_getStartMMKh() != _getEndMMKh()
-				? _getStartMMKh() +"-"+ _getEndMMKh() +" ឆ្នាំ"+ _dateOfMM[2][1].animalYY
-				:  _getStartMMKh() +" ឆ្នាំ"+ _dateOfMM[2][1].animalYY,
-			TextStyle(
-				fontSize: FontSize.subtitle,
-				fontWeight: FontWeight.w500
-			)
-		);
-	}
-
-	String _getStartMMKh(){
-		if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][1].mmKh != null) {
-			return _dateOfMM[_firstWeek][1].mmKh;
-		} else if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][2].mmKh != null) {
-			return _dateOfMM[_firstWeek][2].mmKh;
-		} else if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][3].mmKh != null) {
-			return _dateOfMM[_firstWeek][3].mmKh;
-		}else if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][4].mmKh != null) {
-			return _dateOfMM[_firstWeek][4].mmKh;
-		}else if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][5].mmKh != null) {
-			return _dateOfMM[_firstWeek][5].mmKh;
-		}else if(_dateOfMM[_firstWeek][1] != null && _dateOfMM[_firstWeek][6].mmKh != null) {
-			return _dateOfMM[_firstWeek][6].mmKh;
-		}else {
-			return _dateOfMM[_firstWeek][7].mmKh;
-		}
-	}
-
-	String _getEndMMKh(){
-		if(_dateOfMM[_countWeek][7] != null && _dateOfMM[_countWeek][7].mmKh != null) {
-			return _dateOfMM[_countWeek][7].mmKh;
-		} else if(_dateOfMM[_countWeek][6] != null && _dateOfMM[_countWeek][6].mmKh != null) {
-			return _dateOfMM[_countWeek][6].mmKh;
-		} else if(_dateOfMM[_countWeek][5] != null && _dateOfMM[_countWeek][5].mmKh != null) {
-			return _dateOfMM[_countWeek][5].mmKh;
-		}else if(_dateOfMM[_countWeek][4] != null && _dateOfMM[_countWeek][4].mmKh != null) {
-			return _dateOfMM[_countWeek][4].mmKh;
-		}else if(_dateOfMM[_countWeek][3] != null && _dateOfMM[_countWeek][3].mmKh != null) {
-			return _dateOfMM[_countWeek][3].mmKh;
-		}else if(_dateOfMM[_countWeek][2] != null && _dateOfMM[_countWeek][2].mmKh != null) {
-			return _dateOfMM[_countWeek][2].mmKh;
-		}else {
-			return _dateOfMM[_countWeek][1].mmKh;
-		}
 	}
 
 	Widget _buildViewHeader() {
@@ -514,13 +316,6 @@ class _HomeState extends State<Home> {
 				fontSize: FontSize.body1,
 				color: index == 7 || isHoliday ? ColorRes.red : ColorRes.black
 			)
-		);
-	}
-
-	Widget _buildText(String text, TextStyle style){
-		return TextView().buildText(
-			text: text,
-			style: style
 		);
 	}
 
