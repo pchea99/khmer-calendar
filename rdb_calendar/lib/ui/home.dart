@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +50,7 @@ class _HomeState extends State<Home> {
 		_month = SharedPref.getPref();
 		_generateCalendarKh();
 		_subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-			if(result != null){
+			if(result != ConnectivityResult.none){
 				_getMonth();
 			}
 		});
@@ -64,7 +63,6 @@ class _HomeState extends State<Home> {
 	  	Logging.logWarning(e.toString());
 	  });
 	}
-
 
 	@override
 	void dispose() {
@@ -136,32 +134,37 @@ class _HomeState extends State<Home> {
 		}
 
 		return SingleChildScrollView(
-			child: Container(
-				margin: EdgeInsets.all(NumberRes.padding8),
-				child: Column(
-					children: <Widget>[
-						_buildHeaderDate(),
-						SizedBox(height: NumberRes.padding6),
-						_buildViewHeader(),
-						_buildBoxContent(),
-						SizedBox(height: NumberRes.padding6),
-						SingleChildScrollView(
-							scrollDirection: Axis.horizontal,
-						  child: Container(
-							  margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
-						    child: Column(
-							  crossAxisAlignment: CrossAxisAlignment.start,
-						    	mainAxisAlignment: MainAxisAlignment.start,
-						    	children: <Widget>[
-						    		_buildListOther(),
-						    		_buildListHoliday(),
-						    	],
-						    ),
-						  ),
-						),
-						SizedBox(height: NumberRes.padding12)
-					],
-				),
+			child: Column(
+			  children: <Widget>[
+				  SizedBox(height: NumberRes.padding6),
+				  _buildHeaderDate(),
+			    Container(
+			    	margin: EdgeInsets.all(NumberRes.padding8),
+			    	child: Column(
+			    		children: <Widget>[
+			    			SizedBox(height: NumberRes.padding6),
+			    			_buildViewHeader(),
+			    			_buildBoxContent(),
+			    			SizedBox(height: NumberRes.padding6),
+			    			SingleChildScrollView(
+			    				scrollDirection: Axis.horizontal,
+			    			  child: Container(
+			    				  margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
+			    			    child: Column(
+			    				  crossAxisAlignment: CrossAxisAlignment.start,
+			    			    	mainAxisAlignment: MainAxisAlignment.start,
+			    			    	children: <Widget>[
+			    			    		_buildListOther(),
+			    			    		_buildListHoliday(),
+			    			    	],
+			    			    ),
+			    			  ),
+			    			),
+			    			SizedBox(height: NumberRes.padding12)
+			    		],
+			    	),
+			    ),
+			  ],
 			),
 		);
 	}

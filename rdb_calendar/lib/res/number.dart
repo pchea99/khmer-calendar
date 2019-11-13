@@ -9,6 +9,7 @@ class NumberRes{
 	static const double padding22 = 22.0;
 
 	static const double width10 = 10.0;
-	static const double width45 = 45.0;
 	static const double width25 = 25.0;
+	static const double width45 = 45.0;
+	static const double width145 = 145.0;
 }

@@ -20,9 +20,11 @@ class ServiceFS {
 				Logging.logInfo("read collection months completed");
 				completer.complete(month);
 			}else{
+				completer.completeError(null);
 				Logging.logWarning("read collection months no data");
 			}
 		}).catchError((e){
+			completer.completeError(e);
 			Logging.logError(e.toString());
 		});
 
