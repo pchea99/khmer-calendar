@@ -12,4 +12,5 @@ class NumberRes{
 	static const double width25 = 25.0;
 	static const double width45 = 45.0;
 	static const double width145 = 145.0;
+	static const double width235 = 235.0;
 }
