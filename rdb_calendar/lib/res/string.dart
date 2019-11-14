@@ -5,6 +5,6 @@ class StringRes {
 	static const String publicHoliday = "ថ្ងៃឈប់សំរាកប្រចាំឆ្នាំ";
 	static const String other = "​បន្ថែម";
 	static const String home = "ទំព័រដើម";
-	static const String aboutUs = "អំពីពួកយើង";
+	static const String aboutUs = "អំពីយើង";
 	static const String contactUs = "ទំនាក់ទំនង";
 }

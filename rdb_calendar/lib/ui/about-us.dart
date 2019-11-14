@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
+import 'package:rdb_calendar/res/string.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
 
 class AboutUs extends StatefulWidget {
@@ -15,7 +16,7 @@ class _AboutUsState extends State<AboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarView().buildAppBar(
-        title: 'អំពីពួកយើង',
+        title: StringRes.aboutUs,
         isTitleCenter: true
       ),
       body: Container(

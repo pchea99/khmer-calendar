@@ -510,7 +510,7 @@ class _HomeState extends State<Home> {
 	}
 
 	void _setSeletedDefault(){
-		Future.delayed(Duration(seconds: 2), (){
+		Future.delayed(Duration(seconds: 1), (){
 			_currentIndex = 0;
 			_onSetState();
 		});
