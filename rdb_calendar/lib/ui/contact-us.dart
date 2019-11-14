@@ -17,32 +17,38 @@ class _ContactUsState extends State<ContactUs> {
 			  title: StringRes.contactUs,
 			  isTitleCenter: true
 		  ),
-		  body: Container(
-			  margin: EdgeInsets.all(NumberRes.padding8),
-			  child: Column(
-				  crossAxisAlignment: CrossAxisAlignment.center,
-			    children: <Widget>[
-				    ImageLogo().imageLogo(),
-				    Text(
-					    "អគារលេខ 9-13 ផ្លូវលេខ7 សង្កាត់ចតុមុខ ប្រអប់សំបុត្រលេខ 1410 ភ្នំពេញ កម្ពុជា",
-					    textAlign: TextAlign.center,
-				    ),
-				    SizedBox(height: NumberRes.padding8),
-				    Column(
-					    mainAxisAlignment: MainAxisAlignment.start,
-					    children: <Widget>[
-						    _buildRowView("Phone", "(855) 23 220 810 / 811"),
-						    _buildRowView("Fax", "(855) 23 224 628"),
-						    _buildRowView("Email", "admin@rdb.com.kh"),
-						    _buildRowView("Website", "www.rdb.com.kh"),
-						    _buildRowView("FB", "Rural Development Bank of Cambodia"),
-						    _buildRowView("Youtube", "Rural Development Bank"),
-						    _buildRowView("Linkedin", "Rural Development Bank (RDB)"),
-					    ],
-				    )
-			    ],
+		  body: SingleChildScrollView(
+			  child: Container(
+				  margin: EdgeInsets.all(NumberRes.padding8),
+				  child: _buildBody(),
 			  ),
 		  )
+	  );
+  }
+
+  Widget _buildBody() {
+	  return Column(
+		  crossAxisAlignment: CrossAxisAlignment.center,
+		  children: <Widget>[
+			  ImageLogo().imageLogo(),
+			  Text(
+				  "អគារលេខ 9-13 ផ្លូវលេខ7 សង្កាត់ចតុមុខ ប្រអប់សំបុត្រលេខ 1410 ភ្នំពេញ កម្ពុជា",
+				  textAlign: TextAlign.center,
+			  ),
+			  SizedBox(height: NumberRes.padding8),
+			  Column(
+				  mainAxisAlignment: MainAxisAlignment.start,
+				  children: <Widget>[
+					  _buildRowView("Phone", "(855) 23 220 810 / 811"),
+					  _buildRowView("Fax", "(855) 23 224 628"),
+					  _buildRowView("Email", "admin@rdb.com.kh"),
+					  _buildRowView("Website", "www.rdb.com.kh"),
+					  _buildRowView("FB", "Rural Development Bank of Cambodia"),
+					  _buildRowView("Youtube", "Rural Development Bank"),
+					  _buildRowView("Linkedin", "Rural Development Bank (RDB)"),
+				  ],
+			  )
+		  ],
 	  );
   }
 
