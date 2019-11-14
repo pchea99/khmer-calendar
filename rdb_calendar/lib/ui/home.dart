@@ -13,6 +13,7 @@ import 'package:rdb_calendar/res/string.dart';
 import 'package:rdb_calendar/service/service.dart';
 import 'package:rdb_calendar/shared-pref/shared-pref.dart';
 import 'package:rdb_calendar/ui/about-us.dart';
+import 'package:rdb_calendar/ui/list-days.dart';
 import 'package:rdb_calendar/util/logging.dart';
 import 'package:rdb_calendar/util/navigate.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
@@ -88,6 +89,7 @@ class _HomeState extends State<Home> {
 			),
 			body: _buildBody(),
 			bottomNavigationBar: BottomNavigationBar(
+				type: BottomNavigationBarType.fixed,
 				currentIndex: _currentIndex,
 				onTap: (int index) {
 					_currentIndex = index;
@@ -96,21 +98,27 @@ class _HomeState extends State<Home> {
 						Navigate.openDialog(context, AboutUs());
 					}else if(index == 2){
 						Navigate.openDialog(context, ContactUs());
+					}else if(index == 3){
+						Navigate.openDialog(context, ListDays());
 					}
 					_setSeletedDefault();
 				},// this will be set when a new tab is tapped
 				items: [
 					BottomNavigationBarItem(
 						icon: new Icon(Icons.home),
-						title: new Text('ទំព័រដើម'),
+						title: new Text(StringRes.home),
 					),
 					BottomNavigationBarItem(
 						icon: new Icon(Icons.people),
-						title: new Text('អំពីពួកយើង'),
+						title: new Text(StringRes.aboutUs),
 					),
 					BottomNavigationBarItem(
 						icon: Icon(Icons.contacts),
-						title: Text('ទំនាក់ទំនង')
+						title: Text(StringRes.contactUs)
+					),
+					BottomNavigationBarItem(
+						icon: Icon(Icons.more),
+						title: Text(StringRes.other)
 					)
 				],
 			),

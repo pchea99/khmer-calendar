@@ -13,6 +13,10 @@ class Month{
 		return holiday[mName.toLowerCase()];
 	}
 
+	Map getOther(String mName){
+		return other[mName.toLowerCase()];
+	}
+
 	bool isHoliday(String mName, String numDay){
 		try{
 			if(_isMHasHoliday(mName)){
@@ -50,8 +54,6 @@ class Month{
 	}
 
 	Map toJson(){
-
-
 		return{
 			StringField.holiday: holiday,
 			StringField.other: other,

@@ -57,7 +57,7 @@ class _SplashState extends State<Splash> {
   }
 
   void _navigateTo() {
-    Navigate.removeUntil(context, ListDays());
+    Navigate.removeUntil(context, Home());
   }
 
 	Future _getMonth() async {
