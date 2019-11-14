@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/res/string.dart';
