@@ -5,6 +5,7 @@ import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/service/service.dart';
 import 'package:rdb_calendar/shared-pref/shared-pref.dart';
 import 'package:rdb_calendar/ui/home.dart';
+import 'package:rdb_calendar/ui/list-days.dart';
 import 'package:rdb_calendar/ui/no-connection.dart';
 import 'package:rdb_calendar/util/check-connection.dart';
 import 'package:rdb_calendar/util/generate-data.dart';
@@ -56,7 +57,7 @@ class _SplashState extends State<Splash> {
   }
 
   void _navigateTo() {
-    Navigate.removeUntil(context, Home());
+    Navigate.removeUntil(context, ListDays());
   }
 
 	Future _getMonth() async {
