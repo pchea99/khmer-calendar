@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/res/string.dart';
@@ -20,7 +22,9 @@ class _AboutUsState extends State<AboutUs> {
         title: StringRes.aboutUs,
         isTitleCenter: true
       ),
-      body: SingleChildScrollView(child: _buildBody()),
+      body: SingleChildScrollView(
+        child: _buildBody()
+      ),
       bottomSheet: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -39,17 +43,23 @@ class _AboutUsState extends State<AboutUs> {
     );
   }
 
-  Container _buildBody() {
+  Widget _buildBody() {
     return Container(
       padding: EdgeInsets.all(NumberRes.padding8),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ImageLogo().imageLogo(),
-          Text(
-            "ធនាគារអភិវឌ្ឍន៍ជនបទ (ធ.អ.ជ) គឺជាធនាគាររដ្ឋ ដែលបង្កើតឡើងដោយ រាជរដ្ឋាភិបាលកម្ពុជា ដើម្បីចូលរួមអនុវត្តគោលនយោបាយរបស់រាជរដ្ឋាភិបាល ក្នុងវិស័យកសិកម្ម និងសេដ្ឋកិច្ចជនបទ តាមរយៈការផ្តល់ហិរញ្ញប្បទានដល់តួអង្គ ក្នុងខ្សែច្រវ៉ាក់ផលិតកម្មកសិកម្ម រួមមាន អ្នកផលិតរហូត ដល់ក្រុមហ៊ុនកែច្នៃ និងនាំចេញដែលអាចបំពេញ នូវកង្វះខាតរវាងតម្រូវការ និងការផ្គត់ផ្គង់សេវាហិរញ្ញវត្ថុនៅតំបន់ជនបទ សំដៅរួមចំណែកបង្កើនជីវភាពរស់នៅ របស់ប្រជាកសិករ និងចូលរួមអភិវឌ្ឍន៍សេដ្ឋកិច្ច សង្គម។",
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-              fontSize: FontSize.body1
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: NumberRes.padding12),
+            width: MediaQuery.of(context).size.width,
+            child: Text(
+              "       ធនាគារអភិវឌ្ឍន៍ជនបទ (ធ.អ.ជ) គឺជាធនាគាររដ្ឋ ដែលបង្កើតឡើងដោយ រាជរដ្ឋាភិបាលកម្ពុជាដើម្បីចូលរួមអនុវត្ត គោលនយោបាយ របស់រាជរដ្ឋាភិបាល ក្នុងវិស័យកសិកម្ម និងសេដ្ឋកិច្ចជនបទ តាមរយៈការផ្តល់ ហិរញ្ញប្បទានដល់តួអង្គ ក្នុងខ្សែច្រវ៉ាក់ផលិតកម្មកសិកម្មរួមមាន អ្នកផលិត រហូតដល់ក្រុមហ៊ុនកែច្នៃនិងនាំចេញ ដែលអាចបំពេញនូវ កង្វះខាតរវាងតម្រូវការនិងការ ផ្គត់ផ្គង់សេវាហិរញ្ញវត្ថុ នៅតំបន់ជនបទសំដៅរួមចំណែក បង្កើនជីវភាពរស់នៅ របស់ប្រជាកសិករ និងចូលរួមអភិវឌ្ឍន៍សេដ្ឋកិច្ច សង្គម។",
+              style: TextStyle(
+                fontSize: FontSize.body1
+              ),
+              textAlign: TextAlign.justify,
             ),
           ),
           SizedBox(height: NumberRes.width45)
