@@ -39,6 +39,9 @@ class _HomeState extends State<Home> {
 	int _firstWeek;
 	int _currentIndex;
 	bool _isLoading;
+	List _months = getMonthEn.keys.toList();
+	int _index;
+	PageController _controller;
 
 	@override
 	void initState() {
@@ -48,6 +51,8 @@ class _HomeState extends State<Home> {
 		_countWeek = 1;
 		_currentIndex = 0;
 		DateTime now = new DateTime.now();
+		_index = _months.firstWhere((m)=> m == now.month, orElse: ()=> 1) - 1;
+		_controller = PageController(initialPage: _index, keepPage: true);
 		_currentMM = now.month;
 		_currentYY = now.year;
 		_month = SharedPref.getPref();
@@ -87,7 +92,22 @@ class _HomeState extends State<Home> {
 					onPressed: _onRefresh
 				),
 			),
-			body: _buildBody(),
+			body: PageView.builder(
+				controller: _controller,
+				itemBuilder: (context, position) {
+					return _buildBody();
+				},
+				onPageChanged: (position){
+					position += 1;
+					if(position >= _index){
+						_onNext();
+					}else if(position < _index){
+						_onPrevious();
+					}
+					_index = position;
+				},
+				itemCount: numMonthCalendar,
+			),
 			bottomNavigationBar: BottomNavigationBar(
 				type: BottomNavigationBarType.fixed,
 				currentIndex: _currentIndex,
@@ -101,7 +121,7 @@ class _HomeState extends State<Home> {
 					}else if(index == 3){
 						Navigate.openDialog(context, ListDays());
 					}
-					_setSeletedDefault();
+					_setSelectedDefault();
 				},// this will be set when a new tab is tapped
 				items: [
 					BottomNavigationBarItem(
@@ -117,8 +137,8 @@ class _HomeState extends State<Home> {
 						title: Text(StringRes.contactUs)
 					),
 					BottomNavigationBarItem(
-						icon: Icon(Icons.more),
-						title: Text(StringRes.other)
+						icon: Icon(Icons.calendar_today),
+						title: Text(StringRes.event)
 					)
 				],
 			),
@@ -144,24 +164,18 @@ class _HomeState extends State<Home> {
 		}
 
 		return SingleChildScrollView(
-			child: Column(
-			  children: <Widget>[
-				  SizedBox(height: NumberRes.padding6),
-				  _buildHeaderDate(),
-			    Container(
-			    	margin: EdgeInsets.all(NumberRes.padding8),
-			    	child: Column(
-			    		children: <Widget>[
-			    			SizedBox(height: NumberRes.padding6),
-			    			_buildViewHeader(),
-			    			_buildBoxContent(),
-			    			SizedBox(height: NumberRes.padding6),
-			    			Footer().buildFooter(_month, _currentMM),
-			    			SizedBox(height: NumberRes.padding12)
-			    		],
-			    	),
-			    ),
-			  ],
+			child: Container(
+				margin: EdgeInsets.all(NumberRes.padding8),
+				child: Column(
+					children: <Widget>[
+						_buildHeaderDate(),
+						SizedBox(height: NumberRes.padding6),
+						_buildViewHeader(),
+						_buildBoxContent(),
+						Footer().buildFooter(_month, _currentMM),
+						SizedBox(height: NumberRes.padding12)
+					],
+				),
 			),
 		);
 	}
@@ -169,40 +183,10 @@ class _HomeState extends State<Home> {
 	Widget _buildHeaderDate() {
 		return Row(
 			children: <Widget>[
-				_buildPreviousBtn(),
 				SizedBox(width: NumberRes.padding8),
 				HeaderMMYY().buildHeaderMMYY(_dateOfMM, _firstWeek, _countWeek),
 				SizedBox(width: NumberRes.padding8),
-				_buildNextBtn(),
 			],
-		);
-	}
-
-	InkWell _buildNextBtn() {
-		return InkWell(
-			child: Container(
-				width: NumberRes.width45,
-				height: NumberRes.width45,
-				child: Icon(
-					Icons.arrow_forward_ios,
-					color: ColorRes.blue,
-				),
-			),
-			onTap: _onNext,
-		);
-	}
-
-	InkWell _buildPreviousBtn() {
-		return InkWell(
-			child: Container(
-				width: NumberRes.width45,
-				height: NumberRes.width45,
-				child: Icon(
-					Icons.arrow_back_ios,
-					color: ColorRes.blue,
-				),
-			),
-			onTap: _onPrevious,
 		);
 	}
 
@@ -509,7 +493,7 @@ class _HomeState extends State<Home> {
 		setState(() {});
 	}
 
-	void _setSeletedDefault(){
+	void _setSelectedDefault(){
 		Future.delayed(Duration(seconds: 1), (){
 			_currentIndex = 0;
 			_onSetState();

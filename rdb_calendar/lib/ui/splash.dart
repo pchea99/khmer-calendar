@@ -23,7 +23,7 @@ class _SplashState extends State<Splash> {
 		super.initState();
 		_init();
 		if(isGenerate) {
-			GenerateData().createData();
+			GenerateData().createData(2019);
 		}
 	}
 

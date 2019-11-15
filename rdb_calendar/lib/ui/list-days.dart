@@ -69,8 +69,14 @@ class _ListDaysState extends State<ListDays> {
   }
 
   bool _isWarningDay(m) {
-    return (_month.getHoliday(m) != null && _month.getHoliday(m).isNotEmpty) ||
-      (_month.getOther(m) != null && _month.getOther(m).isNotEmpty);
+    return (
+      _month.getHoliday(m) != null &&
+        _month.getHoliday(m).isNotEmpty
+    ) ||
+      (
+        _month.getOther(m) != null &&
+          _month.getOther(m).isNotEmpty
+      );
   }
 
   Widget _buildContent(String mmKh, int numMonth){
@@ -81,7 +87,6 @@ class _ListDaysState extends State<ListDays> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildMM(mmKh, numMonth),
-          SizedBox(height: NumberRes.padding6),
           Footer().buildFooter(_month, numMonth)
         ],
       ),

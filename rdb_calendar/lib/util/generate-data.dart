@@ -355,21 +355,20 @@ class GenerateData{
 		},
 	};
 
-	void createData(){
+	void createData(int numYear){
+		Map year = new Map();
 		_month.forEach((k, v){
-			Map toMap = new Map();
-
+			Map month = new Map();
 			v.forEach((key, value){
-				Map map = new Map();
-
-				value.forEach((day, data){
-					map[RDBCalendar().convertToKhmerNum(day)] = data;
+				Map day = new Map();
+				value.forEach((d, data){
+					day[RDBCalendar().convertToKhmerNum(d)] = data;
 				});
-
-				toMap[key] = map;
+				month[key] = day;
 			});
-
-			ServiceFS().createData(k, toMap);
+			year[k] = month;
 		});
+
+		ServiceFS().createData(numYear.toString(), year);
 	}
 }

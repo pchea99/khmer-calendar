@@ -12,6 +12,7 @@ class Footer{
 			scrollDirection: Axis.horizontal,
 			child: Container(
 				margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
+				padding: EdgeInsets.symmetric(vertical: NumberRes.padding8),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					mainAxisAlignment: MainAxisAlignment.start,
