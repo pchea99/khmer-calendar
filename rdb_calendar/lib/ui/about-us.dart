@@ -2,11 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/res/string.dart';
 import 'package:rdb_calendar/widget/appbar-view.dart';
 import 'package:rdb_calendar/widget/image-logo.dart';
+import 'package:html/dom.dart' as dom;
 
 class AboutUs extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorRes.white,
       appBar: AppBarView().buildAppBar(
         title: StringRes.aboutUs,
         isTitleCenter: true
@@ -28,12 +32,14 @@ class _AboutUsState extends State<AboutUs> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            color: ColorRes.white,
+            width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.all(NumberRes.padding8),
             child: Text(
               "App version: 1.0.1",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: FontSize.caption
+                fontSize: FontSize.body3
               ),
             ),
           ),
@@ -50,13 +56,12 @@ class _AboutUsState extends State<AboutUs> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ImageLogo().imageLogo(),
-          Text(
-            "\t\t\tធនាគារអភិវឌ្ឍន៍ជនបទ (ធ.អ.ជ) គឺជាធនាគាររដ្ឋ ដែលបង្កើតឡើងដោយរាជរដ្ឋាភិបាលកម្ពុជា ដើម្បីចូលរួមអនុវត្ត គោលនយោបាយ របស់រាជរដ្ឋាភិបាលក្នុងវិស័យកសិកម្ម និងសេដ្ឋកិច្ចជនបទ តាមរយៈការផ្តល់ ហិរញ្ញប្បទានដល់ តួអង្គក្នុងខ្សែច្រវ៉ាក់ ផលិតកម្មកសិកម្ម រួមមាន អ្នកផលិត រហូតដល់ក្រុមហ៊ុនកែច្នៃ និងនាំចេញដែល អាចបំពេញនូវកង្វះខាត​​រវាងតម្រូវការ និងការផ្គត់ផ្គង់សេវាហិរញ្ញវត្ថុ នៅតំបន់ជនបទសំដៅរួមចំណែកបង្កើនជីវភាពរស់នៅ របស់ប្រជាកសិករ និងចូលរួម អភិវឌ្ឍន៍សេដ្ឋកិច្ច សង្គម។",
-            style: TextStyle(
-              fontSize: FontSize.body1,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              'assets/images/about_rdb.png',
+              fit: BoxFit.contain,
             ),
-            textAlign: TextAlign.justify,
-            textDirection: TextDirection.ltr,
           ),
           SizedBox(height: NumberRes.width45)
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rdb_calendar/calendar/calendar-kh.dart';
 import 'package:rdb_calendar/core/config.dart';
 import 'package:rdb_calendar/model/month.dart';
+import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
 import 'package:rdb_calendar/res/string.dart';
@@ -73,17 +74,16 @@ class _ListDaysState extends State<ListDays> {
   }
 
   Widget _buildContent(String mmKh, int numMonth){
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(NumberRes.padding8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            _buildMM(mmKh, numMonth),
-            SizedBox(height: NumberRes.padding6),
-            Footer().buildFooter(_month, numMonth)
-          ],
-        ),
+    return Container(
+      color: ColorRes.white,
+      padding: EdgeInsets.all(NumberRes.padding8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildMM(mmKh, numMonth),
+          SizedBox(height: NumberRes.padding6),
+          Footer().buildFooter(_month, numMonth)
+        ],
       ),
     );
   }
