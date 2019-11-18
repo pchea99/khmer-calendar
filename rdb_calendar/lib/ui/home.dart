@@ -82,13 +82,10 @@ class _HomeState extends State<Home> {
 				onPageChanged: (pageId) {
 					if (pageId == _pages.length - 1) {
 						_onNext();
-//						_pages.add(_buildBody());
 					}
 					if (pageId == 0) {
 						_onPrevious();
 					}
-
-					_onSetState();
 				},
 				controller: _controller,
 				children: _pages.map((p)=> p).toList(),
@@ -127,12 +124,6 @@ class _HomeState extends State<Home> {
 					)
 				],
 			),
-		);
-	}
-
-	Widget _buildPages(page) {
-		return Center(
-			child: Text(page.toString(), style: new TextStyle(fontSize: 60.0)),
 		);
 	}
 

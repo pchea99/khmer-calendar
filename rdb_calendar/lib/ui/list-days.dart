@@ -31,7 +31,7 @@ class _ListDaysState extends State<ListDays> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarView().buildAppBar(
-        title: StringRes.publicHoliday,
+        title: StringRes.publicEvent,
         isTitleCenter: true
       ),
       body: Container(
