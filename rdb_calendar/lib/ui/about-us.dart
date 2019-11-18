@@ -47,6 +47,9 @@ class _AboutUsState extends State<AboutUs> {
   }
 
   Widget _buildBody() {
+    double width = MediaQuery.of(context).size.width;
+    print("----- $width");
+
     return Container(
       padding: EdgeInsets.all(NumberRes.padding8),
       child: Column(
@@ -55,13 +58,17 @@ class _AboutUsState extends State<AboutUs> {
         children: <Widget>[
           ImageLogo().imageLogo(),
           Container(
-            width: MediaQuery.of(context).size.width,
+            height: NumberRes.width235,
             child: Image.asset(
               'assets/images/about_rdb.png',
-              fit: BoxFit.contain,
+              fit: BoxFit.fill,
             ),
           ),
-          SizedBox(height: NumberRes.width45)
+          Row(
+            children: <Widget>[
+              SizedBox(height: NumberRes.width45)
+            ],
+          )
         ],
       )
     );
