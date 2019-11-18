@@ -34,7 +34,8 @@ class _HomeState extends State<Home> {
 	RDBCalendar _rdbCalendar;
 	Year _year;
 	int _currentMM;
-	int _currentYY;
+	int _upperCountYY;
+	int _lowerCountYY;
 	int _countWeek;
 	int _firstWeek;
 	int _currentIndex;
@@ -48,7 +49,6 @@ class _HomeState extends State<Home> {
 		DateTime now = new DateTime.now();
 		_currentIndex = 0;
 		_year = SharedPref.getPref();
-		print("----- $_year");
 		_generateCurrentYear(now);
 		_controller = new PageController(initialPage: now.month - 1, keepPage: true);
 		_subscription = Connectivity().onConnectivityChanged
@@ -150,7 +150,7 @@ class _HomeState extends State<Home> {
 						SizedBox(height: NumberRes.padding6),
 						_buildViewHeader(),
 						_buildBoxContent(),
-						Footer().buildFooter(_year.getMonth(_currentYY), _currentMM),
+						Footer().buildFooter(_year.getMonth(_upperCountYY), _currentMM),
 						SizedBox(height: NumberRes.padding12)
 					],
 				),
@@ -169,33 +169,12 @@ class _HomeState extends State<Home> {
 	}
 
 	void _onNext() {
-		/*_currentMM++;
-		_countWeek = 1;
-		if (_currentMM > 12) {
-			_currentMM = 1;
-			_currentYY++;
-		}
-		_dateOfMM.clear();
-		_setLoading(true);
-		_generateCalendarKh();*/
-		_currentYY++;
+		_upperCountYY++;
 		_generateOneYear();
 	}
 
 	void _onPrevious() {
-		/*if(_currentMM == 12){
-			_currentYY--;
-		}
-		_countWeek = 1;
-		if (_currentMM < 1) {
-			_currentMM = 12;
-			_currentYY--;
-		}
-		_dateOfMM.clear();
-		_setLoading(true);
-		_generateCalendarKh();
-		_currentMM--;*/
-		_currentYY--;
+		_lowerCountYY--;
 		_generatePreviousOneYear();
 	}
 
@@ -427,13 +406,13 @@ class _HomeState extends State<Home> {
 			DateTime.now().day.toString() == _getDayEn(rdbDate);
 	}
 
-	void _generateCalendarKh() {
+	void _generateCalendarKh(int year) {
 		_rdbCalendar = new RDBCalendar();
-		DateTime lastDayOfMonth = new DateTime(_currentYY, _currentMM + 1, 0);
+		DateTime lastDayOfMonth = new DateTime(year, _currentMM + 1, 0);
 		Map<int, RDBDate> weekDay1 = new Map();
 
 		for(int i = 1; i <= lastDayOfMonth.day; i++){
-			DateTime date = new DateTime(_currentYY, _currentMM, i);
+			DateTime date = new DateTime(year, _currentMM, i);
 			int dayNr = (date.weekday + 6) % 7;
 			Map khmerDate = _rdbCalendar.getKhmerLunarString(date);
 			RDBDate rdbDate = new RDBDate()
@@ -441,7 +420,7 @@ class _HomeState extends State<Home> {
 				..dKh = khmerDate['d']
 				..mmEn = _currentMM
 				..mmKh = khmerDate['mm']
-				..yyEn = _currentYY
+				..yyEn = year
 				..yyKh = khmerDate['yy']
 				..animalYY = khmerDate['animalYY']
 				..kr = khmerDate['kr']
@@ -463,7 +442,7 @@ class _HomeState extends State<Home> {
 
 	bool _checkIsHoliday(int i){
 		try {
-			return _year.getMonth(_currentYY).isHoliday(
+			return _year.getMonth(_upperCountYY).isHoliday(
 				getMonthEn[_currentMM],
 				_rdbCalendar.convertToKhmerNum(i.toString())
 			);
@@ -475,7 +454,8 @@ class _HomeState extends State<Home> {
 	void _generateCurrentYear(DateTime now) {
 		_pages = [];
 		_isLoading = true;
-		_currentYY = now.year;
+		_upperCountYY = now.year;
+		_lowerCountYY = now.year;
 		_generateOneYear();
 		if(_controller != null) {
 			_controller.jumpToPage(now.month - 1);
@@ -488,7 +468,7 @@ class _HomeState extends State<Home> {
 	  	_dateOfMM = new Map();
 	  	_countWeek = 1;
 	  	_currentMM = i;
-	  	_generateCalendarKh();
+	  	_generateCalendarKh(_upperCountYY);
 	  	_pages.add(_buildBody());
 	  }
 	}
@@ -498,7 +478,7 @@ class _HomeState extends State<Home> {
 	  	_dateOfMM = new Map();
 	  	_countWeek = 1;
 	  	_currentMM = i;
-	  	_generateCalendarKh();
+	  	_generateCalendarKh(_lowerCountYY);
 		  _pages.insert(0, _buildBody());
 	  }
 	  _controller.jumpToPage(12);

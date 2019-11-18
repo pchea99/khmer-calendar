@@ -132,7 +132,7 @@ class GenerateData{
 			'holiday': {
 				'15': {
 					'en': "Commemoration Day of Father King Norodom Sihanouk",
-					'kh': "ទិវាគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ",
+					'kh': "ទិវាគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដិ",
 					'index': 1
 				},
 				'23': {
@@ -312,7 +312,7 @@ class GenerateData{
 			'holiday': {
 				'15': {
 					'en': "Commemoration Day of Father King Norodom Sihanouk",
-					'kh': "ទិវាគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ",
+					'kh': "ទិវាគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដិ",
 					'index': 1
 				},
 				'29': {
