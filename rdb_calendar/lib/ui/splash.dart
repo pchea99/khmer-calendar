@@ -23,7 +23,7 @@ class _SplashState extends State<Splash> {
 		super.initState();
 		_init();
 		if(isGenerate) {
-			GenerateData().createData(2019);
+			GenerateData().createData(2020);
 		}
 	}
 
@@ -42,17 +42,18 @@ class _SplashState extends State<Splash> {
   Future _init() async {
 	  await SharedPref.init();
 	  if(SharedPref.getPref() == null){
-	  	_getMonth();
+		  CheckConnection().checkConnection().then((isConnected){
+			  if(isConnected){
+				  _getMonth();
+			  }else{
+				  Navigate.removeUntil(context, NoConnection());
+			  }
+		  });
 	  }else{
 	  	Future.delayed(Duration(seconds: 2), (){
 			  _navigateTo();
 		  });
 	  }
-	  CheckConnection().checkConnection().then((isConnected){
-		  if(isConnected){
-			  _getMonth();
-		  }
-	  });
   }
 
   void _navigateTo() {

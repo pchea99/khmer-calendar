@@ -26,25 +26,31 @@ class Footer{
 	}
 
 	Widget _buildListOther(Month month, int currentMM){
-		var other = month.other[getMonthEn[currentMM].toString().toLowerCase()];
-		if(other == null || other.isEmpty){
+		try {
+			var other = month.other[getMonthEn[currentMM].toString().toLowerCase()];
+			if (other == null || other.isEmpty) {
+				return Container();
+			}
+			var entries = other.entries.toList()
+				..sort((l, r) =>
+					l.value['index'].toString().compareTo(r.value['index'].toString()));
+
+			return Container(
+				padding: EdgeInsets.only(
+					right: currentMM == 7 ? 155.0 : currentMM == 2 ? 25.0 : 0.0
+				),
+				child: Column(
+					crossAxisAlignment: CrossAxisAlignment.start,
+					mainAxisAlignment: MainAxisAlignment.start,
+					children: entries.map((e) =>
+						_buildFooter(
+							e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
+					).toList(),
+				),
+			);
+		}catch (e){
 			return Container();
 		}
-		var entries = other.entries.toList()
-			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
-
-		return Container(
-			padding: EdgeInsets.only(
-				right: currentMM == 7 ? 155.0 : currentMM == 2 ? 25.0 : 0.0
-			),
-			child: Column(
-				crossAxisAlignment: CrossAxisAlignment.start,
-				mainAxisAlignment: MainAxisAlignment.start,
-				children: entries.map((e)=>
-					_buildFooter(e.key, other[e.key]['kh'], other[e.key]['en'], ColorRes.blue)
-				).toList(),
-			),
-		);
 	}
 
 	Widget _buildFooter(String numDay, String textKh, String textEn, Color color) {
@@ -74,25 +80,33 @@ class Footer{
 	}
 
 	Widget _buildListHoliday(Month month, int currentMM){
-		var holiday = month.holiday[getMonthEn[currentMM].toString().toLowerCase()];
-		if(holiday == null || holiday.isEmpty){
+		try {
+			var holiday = month.holiday[getMonthEn[currentMM]
+				.toString()
+				.toLowerCase()];
+			if (holiday == null || holiday.isEmpty) {
+				return Container();
+			}
+			var entries = holiday.entries.toList()
+				..sort((l, r) =>
+					l.value['index'].toString().compareTo(r.value['index'].toString()));
+
+			return Container(
+				padding: EdgeInsets.only(
+					right: currentMM == 3 ? 28.0 : currentMM == 9 ? 22.0 : 0.0
+				),
+				child: Column(
+					crossAxisAlignment: CrossAxisAlignment.start,
+					mainAxisAlignment: MainAxisAlignment.start,
+					children: entries.map((e) =>
+						_buildFooter(
+							e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
+					).toList(),
+				),
+			);
+		}catch(e){
 			return Container();
 		}
-		var entries = holiday.entries.toList()
-			..sort((l, r)=> l.value['index'].toString().compareTo(r.value['index'].toString()));
-
-		return Container(
-			padding: EdgeInsets.only(
-				right: currentMM == 3 ? 28.0 : currentMM == 9 ? 22.0 : 0.0
-			),
-			child: Column(
-				crossAxisAlignment: CrossAxisAlignment.start,
-				mainAxisAlignment: MainAxisAlignment.start,
-				children: entries.map((e) =>
-					_buildFooter(e.key, holiday[e.key]['kh'], holiday[e.key]['en'], ColorRes.red)
-				).toList(),
-			),
-		);
 	}
 
 	Widget _buildText(String text, TextStyle style){

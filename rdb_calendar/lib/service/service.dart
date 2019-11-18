@@ -2,24 +2,28 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rdb_calendar/model/month.dart';
+import 'package:rdb_calendar/model/year.dart';
 import 'package:rdb_calendar/util/logging.dart';
 
 class ServiceFS {
-	Future<Month> getMonth(){
-		Completer completer = new Completer<Month>();
-		Month calendar = new Month();
+	Future<Year> getMonth(){
+		Completer completer = new Completer<Year>();
+		Year year = new Year();
 		Logging.logInfo("read collection months");
 		Firestore.instance.collection('calendar').getDocuments().then((snap){
 			if(snap.documents != null && snap.documents.isNotEmpty) {
 				snap.documents.forEach((doc) {
-					print("--- ${doc.data}");
-					calendar.holiday[doc.documentID] = doc.data['holiday'];
-					if(doc.data['other'] != null && doc.data['other'].isNotEmpty){
-						calendar.other[doc.documentID] = doc.data['other'];
-					}
+					Month month = new Month();
+					doc.data.forEach((k, v){
+						month.holiday[k] = v['holiday'];
+						if(v['other'] != null && v['other'].isNotEmpty){
+							month.other[k] = v['other'];
+						}
+					});
+					year.month[doc.documentID] = month;
 				});
-				Logging.logInfo("read collection months completed $calendar");
-				completer.complete(calendar);
+				Logging.logInfo("read collection months completed $year");
+				completer.complete(year);
 			}else{
 				completer.completeError(null);
 				Logging.logWarning("read collection months no data");

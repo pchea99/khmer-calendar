@@ -4,8 +4,8 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:rdb_calendar/calendar/calendar-kh.dart';
 import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/model/month.dart';
 import 'package:rdb_calendar/model/rdb-date.dart';
+import 'package:rdb_calendar/model/year.dart';
 import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
@@ -32,44 +32,30 @@ class _HomeState extends State<Home> {
 	StreamSubscription<ConnectivityResult> _subscription;
 	Map<int, Map<int, RDBDate>> _dateOfMM;
 	RDBCalendar _rdbCalendar;
-	Month _month;
+	Year _year;
 	int _currentMM;
 	int _currentYY;
 	int _countWeek;
 	int _firstWeek;
 	int _currentIndex;
 	bool _isLoading;
-	List _months = getMonthEn.keys.toList();
-	int _index;
 	PageController _controller;
+	List<Widget> _pages;
 
 	@override
 	void initState() {
 		super.initState();
-		_dateOfMM = new Map();
-		_isLoading = true;
-		_countWeek = 1;
-		_currentIndex = 0;
 		DateTime now = new DateTime.now();
-		_index = _months.firstWhere((m)=> m == now.month, orElse: ()=> 1) - 1;
-		_controller = PageController(initialPage: _index, keepPage: true);
-		_currentMM = now.month;
-		_currentYY = now.year;
-		_month = SharedPref.getPref();
-		_generateCalendarKh();
-		_subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-			if(result != ConnectivityResult.none){
+		_currentIndex = 0;
+		_year = SharedPref.getPref();
+		_generateCurrentYear(now);
+		_controller = new PageController(initialPage: now.month - 1, keepPage: true);
+		_subscription = Connectivity().onConnectivityChanged
+			.listen((ConnectivityResult result) {
+				if(result != ConnectivityResult.none){
 				_getMonth();
 			}
 		});
-	}
-
-	void _getMonth() {
-	  ServiceFS().getMonth().then((data){
-	  	SharedPref.setPref(data);
-	  }).catchError((e){
-	  	Logging.logWarning(e.toString());
-	  });
 	}
 
 	@override
@@ -92,21 +78,20 @@ class _HomeState extends State<Home> {
 					onPressed: _onRefresh
 				),
 			),
-			body: PageView.builder(
-				controller: _controller,
-				itemBuilder: (context, position) {
-					return _buildBody();
-				},
-				onPageChanged: (position){
-					position += 1;
-					if(position >= _index){
+			body: PageView(
+				onPageChanged: (pageId) {
+					if (pageId == _pages.length - 1) {
 						_onNext();
-					}else if(position < _index){
+//						_pages.add(_buildBody());
+					}
+					if (pageId == 0) {
 						_onPrevious();
 					}
-					_index = position;
+
+					_onSetState();
 				},
-				itemCount: numMonthCalendar,
+				controller: _controller,
+				children: _pages.map((p)=> p).toList(),
 			),
 			bottomNavigationBar: BottomNavigationBar(
 				type: BottomNavigationBarType.fixed,
@@ -145,13 +130,14 @@ class _HomeState extends State<Home> {
 		);
 	}
 
+	Widget _buildPages(page) {
+		return Center(
+			child: Text(page.toString(), style: new TextStyle(fontSize: 60.0)),
+		);
+	}
+
 	void _onRefresh() {
-		_currentMM = DateTime.now().month;
-		_currentYY = DateTime.now().year;
-		_countWeek = 1;
-		_dateOfMM.clear();
-		_setLoading(true);
-		_generateCalendarKh();
+		_generateCurrentYear(DateTime.now());
 	}
 
 	Widget _buildBody() {
@@ -172,7 +158,7 @@ class _HomeState extends State<Home> {
 						SizedBox(height: NumberRes.padding6),
 						_buildViewHeader(),
 						_buildBoxContent(),
-						Footer().buildFooter(_month, _currentMM),
+						Footer().buildFooter(_year.getMonth(_currentYY), _currentMM),
 						SizedBox(height: NumberRes.padding12)
 					],
 				),
@@ -191,31 +177,34 @@ class _HomeState extends State<Home> {
 	}
 
 	void _onNext() {
-		_currentMM++;
+		/*_currentMM++;
 		_countWeek = 1;
-
 		if (_currentMM > 12) {
 			_currentMM = 1;
 			_currentYY++;
 		}
-
 		_dateOfMM.clear();
 		_setLoading(true);
-		_generateCalendarKh();
+		_generateCalendarKh();*/
+		_currentYY++;
+		_generateOneYear();
 	}
 
 	void _onPrevious() {
-		_currentMM--;
+		/*if(_currentMM == 12){
+			_currentYY--;
+		}
 		_countWeek = 1;
-
 		if (_currentMM < 1) {
 			_currentMM = 12;
 			_currentYY--;
 		}
-
 		_dateOfMM.clear();
 		_setLoading(true);
 		_generateCalendarKh();
+		_currentMM--;*/
+		_currentYY--;
+		_generatePreviousOneYear();
 	}
 
 	void _setLoading(bool isLoading) {
@@ -480,10 +469,56 @@ class _HomeState extends State<Home> {
 		_setLoading(false);
 	}
 
-	bool _checkIsHoliday(int i) => _month.isHoliday(
-		getMonthEn[_currentMM],
-		_rdbCalendar.convertToKhmerNum(i.toString())
-	);
+	bool _checkIsHoliday(int i){
+		try {
+			return _year.getMonth(_currentYY).isHoliday(
+				getMonthEn[_currentMM],
+				_rdbCalendar.convertToKhmerNum(i.toString())
+			);
+		}catch (e){
+			return false;
+		}
+	}
+
+	void _generateCurrentYear(DateTime now) {
+		_pages = [];
+		_isLoading = true;
+		_currentYY = now.year;
+		_generateOneYear();
+		if(_controller != null) {
+			_controller.jumpToPage(now.month - 1);
+			_onSetState();
+		}
+	}
+
+	void _generateOneYear() {
+	  for(int i = 1; i <= 12; i++){
+	  	_dateOfMM = new Map();
+	  	_countWeek = 1;
+	  	_currentMM = i;
+	  	_generateCalendarKh();
+	  	_pages.add(_buildBody());
+	  }
+	}
+
+	void _generatePreviousOneYear() {
+	  for(int i = 12; i >= 1; i--){
+	  	_dateOfMM = new Map();
+	  	_countWeek = 1;
+	  	_currentMM = i;
+	  	_generateCalendarKh();
+		  _pages.insert(0, _buildBody());
+	  }
+	  _controller.jumpToPage(12);
+	}
+
+	void _getMonth() {
+		ServiceFS().getMonth().then((data){
+			SharedPref.setPref(data);
+		}).catchError((e){
+			Logging.logWarning(e.toString());
+		});
+	}
 
 	void _onSetState(){
 		if(!mounted){

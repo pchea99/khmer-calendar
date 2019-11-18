@@ -1,5 +1,4 @@
-bool isGenerate = false;
-int numMonthCalendar = 1200;
+bool isGenerate = true;
 
 Map getHashAnimalYear = {
 	"01": "ជូត",

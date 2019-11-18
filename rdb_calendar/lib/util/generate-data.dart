@@ -2,7 +2,7 @@ import 'package:rdb_calendar/calendar/calendar-kh.dart';
 import 'package:rdb_calendar/service/service.dart';
 
 class GenerateData{
-	Map _month = {
+	/*Map _month = {
 		'january': {
 			'holiday': {
 				'1': {
@@ -173,9 +173,9 @@ class GenerateData{
 			},
 			'other': {}
 		},
-	};
+	};*/
 
-	Map _month2020 = {
+	Map _month = {
 		'january': {
 			'holiday': {
 				'1': {

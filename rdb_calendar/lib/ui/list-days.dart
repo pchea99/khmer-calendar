@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rdb_calendar/calendar/calendar-kh.dart';
 import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/model/month.dart';
+import 'package:rdb_calendar/model/year.dart';
 import 'package:rdb_calendar/res/color.dart';
 import 'package:rdb_calendar/res/fontsize.dart';
 import 'package:rdb_calendar/res/number.dart';
@@ -17,12 +17,14 @@ class ListDays extends StatefulWidget {
 }
 
 class _ListDaysState extends State<ListDays> {
-  Month _month;
+  Year _year;
+  int _currentYY;
 
   @override
   void initState() {
     super.initState();
-    _month = SharedPref.getPref();
+    _currentYY = DateTime.now().year;
+    _year = SharedPref.getPref();
   }
 
   @override
@@ -70,12 +72,12 @@ class _ListDaysState extends State<ListDays> {
 
   bool _isWarningDay(m) {
     return (
-      _month.getHoliday(m) != null &&
-        _month.getHoliday(m).isNotEmpty
+      _year.getMonth(_currentYY).getHoliday(m) != null &&
+        _year.getMonth(_currentYY).getHoliday(m).isNotEmpty
     ) ||
       (
-        _month.getOther(m) != null &&
-          _month.getOther(m).isNotEmpty
+        _year.getMonth(_currentYY).getOther(m) != null &&
+          _year.getMonth(_currentYY).getOther(m).isNotEmpty
       );
   }
 
@@ -87,7 +89,7 @@ class _ListDaysState extends State<ListDays> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildMM(mmKh, numMonth),
-          Footer().buildFooter(_month, numMonth)
+          Footer().buildFooter(_year.getMonth(_currentYY), numMonth)
         ],
       ),
     );

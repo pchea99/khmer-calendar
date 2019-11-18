@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:rdb_calendar/model/month.dart';
+import 'package:rdb_calendar/model/year.dart';
 import 'package:rdb_calendar/util/string-field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,16 +11,16 @@ class SharedPref{
 		_sharedPref = await SharedPreferences.getInstance();
 	}
 
-	static void setPref(Month month){
-		String encode = json.encode(month.toJson());
+	static void setPref(Year year){
+		String encode = json.encode(year.toJson());
 		_sharedPref.setString(StringField.keySharedPref, encode);
 	}
 
-	static Month getPref(){
+	static Year getPref(){
 		try {
 			Map decode = json.decode(_sharedPref.get(StringField.keySharedPref));
-			Month month = Month.fromJson(decode);
-			return month;
+			Year year = Year.fromJson(decode);
+			return year;
 		}catch(e){
 			return null;
 		}
