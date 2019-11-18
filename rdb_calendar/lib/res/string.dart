@@ -1,5 +1,5 @@
 class StringRes {
-	static const String appName = "ប្រតិទិនខ្មែរនៃ ធ.អ.ជ";
+	static const String appName = "ប្រតិទិនខ្មែរ ធ.អ.ជ";
 	static const String noConnectionKh = "គ្មានការភ្ជាប់អ៊ីនធឺណិត!";
 	static const String noConnectionEn = "No internet connection!";
 	static const String publicEvent = "ព្រឹត្តិការណ៍ប្រចាំឆ្នាំ";
