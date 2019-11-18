@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
 		DateTime now = new DateTime.now();
 		_currentIndex = 0;
 		_year = SharedPref.getPref();
+		print("----- $_year");
 		_generateCurrentYear(now);
 		_controller = new PageController(initialPage: now.month - 1, keepPage: true);
 		_subscription = Connectivity().onConnectivityChanged
