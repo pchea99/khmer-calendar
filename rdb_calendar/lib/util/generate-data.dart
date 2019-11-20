@@ -38,7 +38,7 @@ class GenerateData{
 			'holiday': {
 				'8': {
 					'en': "International Women's Day",
-					'kh': "ទិវាអន្តរជាតិនារី",
+					'kh': "ទិវានារីអន្តរជាតិ",
 					'index': 1
 				},
 			},
@@ -210,7 +210,7 @@ class GenerateData{
 			'holiday': {
 				'8': {
 					'en': "International Women's Day",
-					'kh': "ទិវាអន្តរជាតិនារី",
+					'kh': "ទិវានារីអន្តរជាតិ",
 					'index': 1
 				},
 			},
@@ -246,7 +246,7 @@ class GenerateData{
 				'14': {
 					'en': "King's Birthday, Norodom Sihamoni",
 					'kh': "ព្រះរាជពិធីចម្រើនព្រះជន្ម ព្រះមហាក្សត្រ នរោត្តម សីហមុនី",
-					'index': 2
+					'index': 4
 				},
 			},
 			'other': {
