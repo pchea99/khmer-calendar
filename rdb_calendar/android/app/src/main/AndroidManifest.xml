@@ -1,5 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="rdb.rdb_calendar">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="rdb.rdb_calendar"
+    xmlns:dist="http://schemas.android.com/apk/distribution">
+    <dist:module dist:instant="true"/>
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
