@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
 	RDBCalendar _rdbCalendar;
 	Year _year;
 	int _currentMM;
+	int _currentYY;
 	int _upperCountYY;
 	int _lowerCountYY;
 	int _countWeek;
@@ -132,7 +133,7 @@ class _HomeState extends State<Home> {
 		_generateCurrentYear(DateTime.now());
 	}
 
-	Widget _buildBody() {
+	Widget _buildBody(int year) {
 		if(_isLoading){
 			return Center(
 				child: Container(
@@ -141,20 +142,22 @@ class _HomeState extends State<Home> {
 			);
 		}
 
-		return SingleChildScrollView(
-			child: Container(
-				margin: EdgeInsets.all(NumberRes.padding8),
-				child: Column(
-					children: <Widget>[
-						_buildHeaderDate(),
-						SizedBox(height: NumberRes.padding6),
-						_buildViewHeader(),
-						_buildBoxContent(),
-						Footer().buildFooter(_year.getMonth(_upperCountYY), _currentMM),
-						SizedBox(height: NumberRes.padding12)
-					],
-				),
-			),
+		return Center(
+		  child: SingleChildScrollView(
+		  	child: Container(
+		  		margin: EdgeInsets.all(NumberRes.padding8),
+		  		child: Column(
+		  			children: <Widget>[
+		  				_buildHeaderDate(),
+		  				SizedBox(height: NumberRes.padding6),
+		  				_buildViewHeader(),
+		  				_buildBoxContent(),
+		  				Footer().buildFooter(_year.getMonth(year), _currentMM),
+		  				SizedBox(height: NumberRes.padding12)
+		  			],
+		  		),
+		  	),
+		  ),
 		);
 	}
 
@@ -469,7 +472,7 @@ class _HomeState extends State<Home> {
 	  	_countWeek = 1;
 	  	_currentMM = i;
 	  	_generateCalendarKh(_upperCountYY);
-	  	_pages.add(_buildBody());
+	  	_pages.add(_buildBody(_upperCountYY));
 	  }
 	}
 
@@ -479,7 +482,7 @@ class _HomeState extends State<Home> {
 	  	_countWeek = 1;
 	  	_currentMM = i;
 	  	_generateCalendarKh(_lowerCountYY);
-		  _pages.insert(0, _buildBody());
+		  _pages.insert(0, _buildBody(_lowerCountYY));
 	  }
 	  _controller.jumpToPage(12);
 	}
