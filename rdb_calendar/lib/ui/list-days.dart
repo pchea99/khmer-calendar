@@ -47,8 +47,8 @@ class _ListDaysState extends State<ListDays> {
     getMonthEn.forEach((k, m){
       DateTime startDate = new DateTime(now.year, k, 1);
       DateTime endDate = new DateTime(now.year, k, 25);
-      Map startMMKh = RDBCalendar().getKhmerLunarString(startDate);
-      Map endMMKh = RDBCalendar().getKhmerLunarString(endDate);
+      Map startMMKh = RDBCalendar.getKhmerLunarString(startDate);
+      Map endMMKh = RDBCalendar.getKhmerLunarString(endDate);
 
       if(_isWarningDay(m)) {
         widgets.add(_buildContent(_getMMKh(startMMKh, endMMKh), k));

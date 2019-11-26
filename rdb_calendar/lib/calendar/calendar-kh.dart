@@ -3,7 +3,7 @@ import 'package:rdb_calendar/core/config.dart';
 import 'package:sprintf/sprintf.dart';
 
 class RDBCalendar{
-	String _getCalendarLeap(int beYear) {
+	static String _getCalendarLeap(int beYear) {
 		String leap = _getBoditheyLeap(beYear);
 		String leapP = _getBoditheyLeap(beYear - 1);
 
@@ -18,7 +18,7 @@ class RDBCalendar{
 		return leap;
 	}
 
-	String _getBoditheyLeap(int beYear) {
+	static String _getBoditheyLeap(int beYear) {
 		String str = "";
 		bool isLeapDayYear = false;
 
@@ -79,7 +79,7 @@ class RDBCalendar{
 		return str;
 	}
 
-	Map getKhmerLunarString(DateTime srcDate) {
+	static Map getKhmerLunarString(DateTime srcDate) {
 		Map hsMonth = getHashMonth;
 		Map hsAnimalYear = getHashAnimalYear;
 		Map hsSak = getHashSak;
@@ -123,7 +123,7 @@ class RDBCalendar{
 		return getWeekDayKH[num];
 	}
 
-	String convertToKhmerNum(String src) {
+	static String convertToKhmerNum(String src) {
 		return src
 			.replaceAll("0", "០")
 			.replaceAll("1", "១")
@@ -137,7 +137,7 @@ class RDBCalendar{
 			.replaceAll("9", "៩");
 	}
 
-	String _getKhmerLunarCode(DateTime srcDate) {
+	static String _getKhmerLunarCode(DateTime srcDate) {
 		Map hsDay = new Map();
 		hsDay[1] = "01K01";
 		hsDay[2] = "01K02";

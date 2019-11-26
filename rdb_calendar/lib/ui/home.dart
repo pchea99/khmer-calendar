@@ -410,14 +410,13 @@ class _HomeState extends State<Home> {
 	}
 
 	void _generateCalendarKh(int year) {
-		_rdbCalendar = new RDBCalendar();
 		DateTime lastDayOfMonth = new DateTime(year, _currentMM + 1, 0);
 		Map<int, RDBDate> weekDay1 = new Map();
 
 		for(int i = 1; i <= lastDayOfMonth.day; i++){
 			DateTime date = new DateTime(year, _currentMM, i);
 			int dayNr = (date.weekday + 6) % 7;
-			Map khmerDate = _rdbCalendar.getKhmerLunarString(date);
+			Map khmerDate = RDBCalendar.getKhmerLunarString(date);
 			RDBDate rdbDate = new RDBDate()
 				..dEn = i
 				..dKh = khmerDate['d']
@@ -429,7 +428,7 @@ class _HomeState extends State<Home> {
 				..kr = khmerDate['kr']
 				..s = khmerDate['s']
 				..sak = khmerDate['sak']
-				..isHoliday = _checkIsHoliday(i)
+				..isHoliday = _checkIsHoliday(year, i)
 			;
 
 			if(dayNr == 0){
@@ -443,11 +442,11 @@ class _HomeState extends State<Home> {
 		_setLoading(false);
 	}
 
-	bool _checkIsHoliday(int i){
+	bool _checkIsHoliday(int year, int i){
 		try {
-			return _year.getMonth(_upperCountYY).isHoliday(
+			return _year.getMonth(year).isHoliday(
 				getMonthEn[_currentMM],
-				_rdbCalendar.convertToKhmerNum(i.toString())
+				RDBCalendar.convertToKhmerNum(i.toString())
 			);
 		}catch (e){
 			return false;

@@ -362,7 +362,7 @@ class GenerateData{
 			v.forEach((key, value){
 				Map day = new Map();
 				value.forEach((d, data){
-					day[RDBCalendar().convertToKhmerNum(d)] = data;
+					day[RDBCalendar.convertToKhmerNum(d)] = data;
 				});
 				month[key] = day;
 			});
