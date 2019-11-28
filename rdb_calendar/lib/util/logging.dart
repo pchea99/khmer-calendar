@@ -1,5 +1,5 @@
 class Logging{
-	static bool _isLogged = true;
+	static bool _isLogged = false;
 
 	static void logInfo(String msg){
 		if(_isLogged) {
