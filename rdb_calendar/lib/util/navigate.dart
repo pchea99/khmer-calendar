@@ -12,7 +12,7 @@ class Navigate{
 		);
 	}
 
-	static Future removeUntil(BuildContext context, Widget routTo){
+	static Future pushAndRemoveUntil(BuildContext context, Widget routTo){
 		return Navigator.of(context).pushAndRemoveUntil(
 			MaterialPageRoute(
 				builder: (context) => routTo),
@@ -24,7 +24,7 @@ class Navigate{
 		});
 	}
 
-	static Future route(BuildContext context, Widget routTo){
+	static Future pushReplacement(BuildContext context, Widget routTo){
 		return Navigator.pushReplacement(
 			context,
 			MaterialPageRoute(

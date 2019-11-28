@@ -46,7 +46,7 @@ class _SplashState extends State<Splash> {
 			  if(isConnected){
 				  _getMonth();
 			  }else{
-				  Navigate.removeUntil(context, NoConnection());
+				  Navigate.pushAndRemoveUntil(context, NoConnection());
 			  }
 		  });
 	  }else{
@@ -57,7 +57,7 @@ class _SplashState extends State<Splash> {
   }
 
   void _navigateTo() {
-    Navigate.removeUntil(context, Home());
+    Navigate.pushAndRemoveUntil(context, Home());
   }
 
 	Future _getMonth() async {
@@ -65,7 +65,7 @@ class _SplashState extends State<Splash> {
 			SharedPref.setPref(data);
 			_navigateTo();
 		}).catchError((e){
-			Navigate.removeUntil(context, NoConnection());
+			Navigate.pushAndRemoveUntil(context, NoConnection());
 			Logging.logWarning(e.toString());
 		});
 	}

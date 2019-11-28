@@ -95,7 +95,7 @@ class _NoConnectionState extends State<NoConnection> {
 	void _getMonthData() {
 	  ServiceFS().getMonth().then((data){
 	  	SharedPref.setPref(data);
-	  	Navigate.removeUntil(context, Home());
+	  	Navigate.pushAndRemoveUntil(context, Home());
 	  }).catchError((e){
 	  	Logging.logWarning(e.toString());
 	  });
