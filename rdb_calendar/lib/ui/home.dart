@@ -288,7 +288,6 @@ class _HomeState extends State<Home> {
 				margin: EdgeInsets.all(NumberRes.padding3),
 				color: ColorRes.green,
 				width: NumberRes.width45,
-				height: NumberRes.width45,
 				child: Center(
 					child: _buildHeader(index),
 				),

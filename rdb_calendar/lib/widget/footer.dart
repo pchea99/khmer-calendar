@@ -8,19 +8,16 @@ import 'package:rdbCalendar/widget/text-view.dart';
 
 class Footer{
 	Widget buildFooter(Month month, int currentMM){
-		return SingleChildScrollView(
-			scrollDirection: Axis.horizontal,
-			child: Container(
-				margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
-				padding: EdgeInsets.symmetric(vertical: NumberRes.padding8),
-				child: Column(
-					crossAxisAlignment: CrossAxisAlignment.start,
-					mainAxisAlignment: MainAxisAlignment.start,
-					children: <Widget>[
-						_buildListOther(month, currentMM),
-						_buildListHoliday(month, currentMM),
-					],
-				),
+		return Container(
+			margin: EdgeInsets.symmetric(horizontal: NumberRes.padding8),
+			padding: EdgeInsets.symmetric(vertical: NumberRes.padding8),
+			child: Column(
+				crossAxisAlignment: CrossAxisAlignment.start,
+				mainAxisAlignment: MainAxisAlignment.start,
+				children: <Widget>[
+					_buildListOther(month, currentMM),
+					_buildListHoliday(month, currentMM),
+				],
 			),
 		);
 	}
@@ -36,9 +33,6 @@ class Footer{
 					l.value['index'].toString().compareTo(r.value['index'].toString()));
 
 			return Container(
-				padding: EdgeInsets.only(
-					right: currentMM == 7 ? 155.0 : currentMM == 2 ? 25.0 : 0.0
-				),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					mainAxisAlignment: MainAxisAlignment.start,
@@ -54,27 +48,37 @@ class Footer{
 	}
 
 	Widget _buildFooter(String numDay, String textKh, String textEn, Color color) {
-		return Row(
-			crossAxisAlignment: CrossAxisAlignment.start,
-			mainAxisAlignment: MainAxisAlignment.start,
-			children: <Widget>[
-				_buildText(
-					numDay,
-					_textStyleList(color)
-				),
-				SizedBox(width: NumberRes.padding8),
-				_buildText(
-					textKh +" / "+  textEn,
-					_textStyleList(color)
-				),
-				SizedBox(width: NumberRes.width25),
-			],
+		return Container(
+			padding: EdgeInsets.only(top: NumberRes.padding6),
+			child: Row(
+		  	crossAxisAlignment: CrossAxisAlignment.start,
+		  	mainAxisAlignment: MainAxisAlignment.start,
+		  	children: <Widget>[
+		  		_buildText(
+		  			numDay,
+		  			_textStyleList(color)
+		  		),
+		  		SizedBox(width: NumberRes.padding8),
+		  		Expanded(
+		  		  child: SingleChildScrollView(
+		  		  	scrollDirection: Axis.horizontal,
+		  		    child: Container(
+		  					margin: EdgeInsets.only(right: NumberRes.width110),
+		  		      child: _buildText(
+		  		      	textKh +" / "+  textEn,
+		  		      	_textStyleList(color)
+		  		      ),
+		  		    ),
+		  		  ),
+		  		),
+		  	],
+		  ),
 		);
 	}
 
 	TextStyle _textStyleList(Color color) {
 		return TextStyle(
-			fontSize: FontSize.body1,
+			fontSize: FontSize.subtitle,
 			color: color
 		);
 	}
@@ -92,9 +96,6 @@ class Footer{
 					l.value['index'].toString().compareTo(r.value['index'].toString()));
 
 			return Container(
-				padding: EdgeInsets.only(
-					right: currentMM == 3 ? 28.0 : currentMM == 9 ? 22.0 : 0.0
-				),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					mainAxisAlignment: MainAxisAlignment.start,

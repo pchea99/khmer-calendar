@@ -35,7 +35,7 @@ class HeaderMMYY{
 					_getEndMMKh(dateOfMM, countWeek) +" ឆ្នាំ"+ dateOfMM[2][1].animalYY
 				: _getStartMMKh(dateOfMM, firstWeek) +" ឆ្នាំ"+ dateOfMM[2][1].animalYY,
 			TextStyle(
-				fontSize: FontSize.subtitle,
+				fontSize: FontSize.subhead,
 				fontWeight: FontWeight.w500
 			)
 		);
@@ -45,7 +45,7 @@ class HeaderMMYY{
 		return _buildText(
 			getMonthKh[dateOfMM[2][1].mmEn],
 			TextStyle(
-				fontSize: FontSize.subtitle,
+				fontSize: FontSize.subhead,
 				fontWeight: FontWeight.w500
 			)
 		);
@@ -57,7 +57,7 @@ class HeaderMMYY{
 			child: _buildText(
 				"ព.ស​ "+ dateOfMM[countWeek][1].yyKh,
 				TextStyle(
-					fontSize: FontSize.body1,
+					fontSize: FontSize.subhead,
 					fontWeight: FontWeight.w500
 				)
 			),
@@ -71,7 +71,7 @@ class HeaderMMYY{
 				_buildText(
 					getMonthEn[dateOfMM[2][1].mmEn],
 					TextStyle(
-						fontSize: FontSize.body1,
+						fontSize: FontSize.subhead,
 						fontWeight: FontWeight.w500
 					)
 				),
@@ -79,7 +79,7 @@ class HeaderMMYY{
 				_buildText(
 					dateOfMM[2][1].yyEn.toString(),
 					TextStyle(
-						fontSize: FontSize.body1,
+						fontSize: FontSize.subhead,
 						fontWeight: FontWeight.w500
 					)
 				),

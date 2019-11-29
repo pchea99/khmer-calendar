@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>457153427958-5jvk8sh0uncdcojvnul5lcfb463j22ne.apps.googleusercontent.com</string>
+	<string>457153427958-amu1k913i72vdhi8o48molsnlkl7td62.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.457153427958-5jvk8sh0uncdcojvnul5lcfb463j22ne</string>
+	<string>com.googleusercontent.apps.457153427958-amu1k913i72vdhi8o48molsnlkl7td62</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDBi5aAfXRdWb0LQ94fGQ91k7A37c_zjy8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>rdb.rdb-calendar</string>
+	<string>com.calendar.rdb</string>
 	<key>PROJECT_ID</key>
 	<string>rdbcalendarapp-47a9c</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:457153427958:ios:5e0d6a2850ff957ffb6fd7</string>
+	<string>1:457153427958:ios:523b7e80cd6e521cfb6fd7</string>
 	<key>DATABASE_URL</key>
 	<string>https://rdbcalendarapp-47a9c.firebaseio.com</string>
 </dict>
