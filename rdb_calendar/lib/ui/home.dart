@@ -474,6 +474,7 @@ class _HomeState extends State<Home> {
 			'numYear': _lowerCountYY
 		};
 		List<DateYear> dateYears = await compute(_generateDateNP, data);
+		dateYears.sort((l, r)=> r.currentMM - l.currentMM);
 		dateYears.forEach((date){
 			_pages.insert(0,
 					_buildBody(
@@ -486,7 +487,7 @@ class _HomeState extends State<Home> {
 			);
 		});
 		_isGenerate = false;
-		_jumpToCurrentMM(12);
+		_jumpToCurrentMM(13);
 	}
 
 	void _generateCalendarKh(int year, bool isPrevious) {
