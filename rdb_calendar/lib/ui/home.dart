@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rdbCalendar/calendar/calendar-kh.dart';
 import 'package:rdbCalendar/core/config.dart';
@@ -30,22 +31,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 	StreamSubscription<ConnectivityResult> _subscription;
-	Map<int, Map<int, RDBDate>> _dateOfMM;
 	Year _year;
-	int _currentMM;
 	int _upperCountYY;
 	int _lowerCountYY;
-	int _countWeek;
-	int _firstWeek;
 	int _currentIndex;
-	bool _isLoading;
 	PageController _controller;
 	List<Widget> _pages;
+	bool _isGenerate;
 
 	@override
 	void initState() {
 		super.initState();
 		DateTime now = new DateTime.now();
+		_isGenerate = false;
 		_currentIndex = 0;
 		_year = SharedPref.getPref();
 		_generateCurrentYear(now);
@@ -80,10 +78,10 @@ class _HomeState extends State<Home> {
 			),
 			body: PageView(
 				onPageChanged: (pageId) {
-					if (pageId == _pages.length - 1) {
+					if (pageId == _pages.length - 2) {
 						_onNext();
 					}
-					if (pageId == 0) {
+					if (pageId == 2) {
 						_onPrevious();
 					}
 				},
@@ -128,29 +126,37 @@ class _HomeState extends State<Home> {
 	}
 
 	void _onRefresh() {
-		_generateCurrentYear(DateTime.now());
+		if(!_isGenerate) {
+			_generateCurrentYear(DateTime.now());
+		}
 	}
 
-	Widget _buildBody(int year) {
-		if(_isLoading){
-			return Center(
-				child: Container(
-					child:  CircularProgressIndicator(),
-				),
-			);
-		}
-
+	Widget _buildBody({
+		Map<int, Map<int, RDBDate>> dateOfMM,
+		int firstWeek,
+		int countWeek,
+		int year,
+		int currentMM
+	}) {
 		return Center(
 		  child: SingleChildScrollView(
 		  	child: Container(
 		  		margin: EdgeInsets.all(NumberRes.padding8),
 		  		child: Column(
 		  			children: <Widget>[
-		  				_buildHeaderDate(),
+							_buildHeaderDate(
+									dateOfMM: dateOfMM,
+									countWeek: countWeek,
+									firstWeek: firstWeek
+							),
 		  				SizedBox(height: NumberRes.padding6),
 		  				_buildViewHeader(),
-		  				_buildBoxContent(),
-		  				Footer().buildFooter(_year.getMonth(year), _currentMM),
+		  				_buildBoxContent(
+								dateOfMM: dateOfMM,
+								countWeek: countWeek,
+								firstWeek: firstWeek
+							),
+		  				Footer().buildFooter(_year.getMonth(year), currentMM),
 		  				SizedBox(height: NumberRes.padding12)
 		  			],
 		  		),
@@ -159,11 +165,15 @@ class _HomeState extends State<Home> {
 		);
 	}
 
-	Widget _buildHeaderDate() {
+	Widget _buildHeaderDate({
+		Map<int, Map<int, RDBDate>> dateOfMM,
+		int countWeek,
+		int firstWeek
+	}) {
 		return Row(
 			children: <Widget>[
 				SizedBox(width: NumberRes.padding8),
-				HeaderMMYY().buildHeaderMMYY(_dateOfMM, _firstWeek, _countWeek),
+				HeaderMMYY().buildHeaderMMYY(dateOfMM, firstWeek, countWeek),
 				SizedBox(width: NumberRes.padding8),
 			],
 		);
@@ -171,17 +181,12 @@ class _HomeState extends State<Home> {
 
 	void _onNext() {
 		_upperCountYY++;
-		_generateOneYear();
+		_generateNextOneYear();
 	}
 
 	void _onPrevious() {
 		_lowerCountYY--;
 		_generatePreviousOneYear();
-	}
-
-	void _setLoading(bool isLoading) {
-		_isLoading = isLoading;
-		_onSetState();
 	}
 
 	Widget _buildViewHeader() {
@@ -203,10 +208,14 @@ class _HomeState extends State<Home> {
 		);
 	}
 
-	Widget _buildBoxContent(){
+	Widget _buildBoxContent({
+		Map<int, Map<int, RDBDate>> dateOfMM,
+		int firstWeek,
+		int countWeek
+	}){
 		List<Widget> widgets = [];
-		for(int i = _firstWeek; i <= _countWeek; i++){
-			widgets.add(_buildViewContent(i));
+		for(int i = firstWeek; i <= countWeek; i++){
+			widgets.add(_buildViewContent(dateOfMM, i));
 		}
 
 		return Container(
@@ -225,11 +234,15 @@ class _HomeState extends State<Home> {
 		);
 	}
 
-	Widget _buildViewContent(int numWeek) {
+	Widget _buildViewContent(Map<int, Map<int, RDBDate>> dateOfMM, int numWeek) {
 		return Row(
 			mainAxisAlignment: MainAxisAlignment.spaceAround,
 			children: getWeekDayKH.keys.map((k) =>
-				_buildFitContent(numWeek, k)).toList(),
+				_buildFitContent(
+					dateOfMM: dateOfMM,
+					numWeek: numWeek,
+					index: k
+				)).toList(),
 		);
 	}
 
@@ -295,8 +308,12 @@ class _HomeState extends State<Home> {
 		);
 	}
 
-	Widget _buildFitContent(int numWeek, int index) {
-		RDBDate rdbDate = _dateOfMM[numWeek][index];
+	Widget _buildFitContent({
+		Map<int, Map<int, RDBDate>> dateOfMM,
+		int numWeek,
+		int index
+	}) {
+		RDBDate rdbDate = dateOfMM[numWeek][index];
 
 		return Flexible(
 			child: Container(
@@ -406,81 +423,137 @@ class _HomeState extends State<Home> {
 			DateTime.now().day.toString() == _getDayEn(rdbDate);
 	}
 
-	void _generateCalendarKh(int year) {
-		DateTime lastDayOfMonth = new DateTime(year, _currentMM + 1, 0);
-		Map<int, RDBDate> weekDay1 = new Map();
-
-		for(int i = 1; i <= lastDayOfMonth.day; i++){
-			DateTime date = new DateTime(year, _currentMM, i);
-			int dayNr = (date.weekday + 6) % 7;
-			Map khmerDate = RDBCalendar.getKhmerLunarString(date);
-			RDBDate rdbDate = new RDBDate()
-				..dEn = i
-				..dKh = khmerDate['d']
-				..mmEn = _currentMM
-				..mmKh = khmerDate['mm']
-				..yyEn = year
-				..yyKh = khmerDate['yy']
-				..animalYY = khmerDate['animalYY']
-				..kr = khmerDate['kr']
-				..s = khmerDate['s']
-				..sak = khmerDate['sak']
-				..isHoliday = _checkIsHoliday(year, i)
-			;
-
-			if(dayNr == 0){
-				_countWeek++;
-				weekDay1.clear();
+	void _generateCurrentYear(DateTime now) async {
+		_pages = [];
+		_upperCountYY = now.year;
+		_lowerCountYY = now.year;
+		_generateCalendarKh(now.year, false);
+		_jumpToCurrentMM(now.month - 1);
+		Future.delayed(Duration(seconds: 1), (){
+			if((now.month - 1) == 10){
+				_onNext();
 			}
-			weekDay1[date.weekday] = RDBDate.clone(rdbDate);
-			_dateOfMM[_countWeek] = Map.from(weekDay1);
-		}
-		_firstWeek = _dateOfMM.keys.first;
-		_setLoading(false);
+		});
 	}
 
-	bool _checkIsHoliday(int year, int i){
+	void _jumpToCurrentMM(int index){
+		if(_controller != null) {
+			_controller.jumpToPage(index);
+			_onSetState();
+		}
+	}
+
+	void _generateNextOneYear() async {
+		_isGenerate = true;
+		_onSetState();
+		Map data = {
+			'year': _year,
+			'numYear': _upperCountYY
+		};
+		List<DateYear> dateYears = await compute(_generateDateNP, data);
+		dateYears.forEach((date){
+			_pages.add(
+					_buildBody(
+							dateOfMM: date.dateOfMM,
+							year: date.year,
+							currentMM: date.currentMM,
+							countWeek: date.countWeek,
+							firstWeek: date.firstWeek
+					)
+			);
+		});
+		_isGenerate = false;
+		_onSetState();
+	}
+
+	void _generatePreviousOneYear() async {
+		_isGenerate = true;
+		_onSetState();
+		Map data = {
+			'year': _year,
+			'numYear': _lowerCountYY
+		};
+		List<DateYear> dateYears = await compute(_generateDateNP, data);
+		dateYears.forEach((date){
+			_pages.insert(0,
+					_buildBody(
+							dateOfMM: date.dateOfMM,
+							year: date.year,
+							currentMM: date.currentMM,
+							countWeek: date.countWeek,
+							firstWeek: date.firstWeek
+					)
+			);
+		});
+		_isGenerate = false;
+		_jumpToCurrentMM(12);
+	}
+
+	void _generateCalendarKh(int year, bool isPrevious) {
+		Map<int, Map<int, RDBDate>> dateOfMM;
+		int countWeek;
+		int firstWeek;
+		int currentMM;
+
+		for(int i = 1; i <= 12; i++){
+			dateOfMM = new Map();
+			countWeek = 1;
+			currentMM = i;
+
+			DateTime lastDayOfMonth = new DateTime(year, currentMM + 1, 0);
+			Map<int, RDBDate> weekDay1 = new Map();
+
+			for(int i = 1; i <= lastDayOfMonth.day; i++){
+				DateTime date = new DateTime(year, currentMM, i);
+				int dayNr = (date.weekday + 6) % 7;
+				Map khmerDate = RDBCalendar.getKhmerLunarString(date);
+
+				RDBDate rdbDate = new RDBDate()
+					..dEn = i
+					..dKh = khmerDate['d']
+					..mmEn = currentMM
+					..mmKh = khmerDate['mm']
+					..yyEn = year
+					..yyKh = khmerDate['yy']
+					..animalYY = khmerDate['animalYY']
+					..kr = khmerDate['kr']
+					..s = khmerDate['s']
+					..sak = khmerDate['sak']
+					..isHoliday = _HomeState.checkIsHoliday(_year, year, currentMM, i)
+				;
+
+				if(dayNr == 0){
+					countWeek++;
+					weekDay1.clear();
+				}
+				weekDay1[date.weekday] = RDBDate.clone(rdbDate);
+				dateOfMM[countWeek] = Map.from(weekDay1);
+			}
+
+			firstWeek = dateOfMM.keys.first;
+
+			_pages.add(
+					_buildBody(
+							dateOfMM: dateOfMM,
+							year: _upperCountYY,
+							currentMM: currentMM,
+							countWeek: countWeek,
+							firstWeek: firstWeek
+					)
+			);
+			_onSetState();
+		}
+	}
+
+	static bool checkIsHoliday(Year year, int numYear, int currentMM, int i){
 		try {
-			return _year.getMonth(year).isHoliday(
-				getMonthEn[_currentMM],
+			return year.getMonth(numYear).isHoliday(
+				getMonthEn[currentMM],
 				RDBCalendar.convertToKhmerNum(i.toString())
 			);
 		}catch (e){
 			return false;
 		}
-	}
-
-	void _generateCurrentYear(DateTime now) {
-		_pages = [];
-		_isLoading = true;
-		_upperCountYY = now.year;
-		_lowerCountYY = now.year;
-		_generateOneYear();
-		if(_controller != null) {
-			_controller.jumpToPage(now.month - 1);
-			_onSetState();
-		}
-	}
-
-	void _generateOneYear() {
-	  for(int i = 1; i <= 12; i++){
-	  	_dateOfMM = new Map();
-	  	_countWeek = 1;
-	  	_currentMM = i;
-	  	_generateCalendarKh(_upperCountYY);
-	  	_pages.add(_buildBody(_upperCountYY));
-	  }
-	}
-
-	void _generatePreviousOneYear() {
-	  for(int i = 12; i >= 1; i--){
-	  	_dateOfMM = new Map();
-	  	_countWeek = 1;
-	  	_currentMM = i;
-	  	_generateCalendarKh(_lowerCountYY);
-		  _pages.insert(0, _buildBody(_lowerCountYY));
-	  }
-	  _controller.jumpToPage(12);
 	}
 
 	void _getMonth() {
@@ -504,5 +577,74 @@ class _HomeState extends State<Home> {
 			_currentIndex = 0;
 			_onSetState();
 		});
+	}
+
+	static Future<List<DateYear>> _generateDateNP(Map data) async {
+		List<DateYear> dateYears = [];
+		Map<int, Map<int, RDBDate>> dateOfMM;
+		int countWeek;
+		int firstWeek;
+		int currentMM;
+
+		for(int i = 1; i <= 12; i++){
+			dateOfMM = new Map();
+			countWeek = 1;
+			currentMM = i;
+			DateTime lastDayOfMonth = new DateTime(data['numYear'], currentMM + 1, 0);
+			Map<int, RDBDate> weekDay1 = new Map();
+
+			for (int i = 1; i <= lastDayOfMonth.day; i++) {
+				DateTime date = new DateTime(data['numYear'], currentMM, i);
+				int dayNr = (date.weekday + 6) % 7;
+
+				var khmerDate = RDBCalendar.getKhmerLunarString(date);
+
+				RDBDate rdbDate = new RDBDate()
+					..dEn = i
+					..dKh = khmerDate['d']
+					..mmEn = currentMM
+					..mmKh = khmerDate['mm']
+					..yyEn = data['numYear']
+					..yyKh = khmerDate['yy']
+					..animalYY = khmerDate['animalYY']
+					..kr = khmerDate['kr']
+					..s = khmerDate['s']
+					..sak = khmerDate['sak']
+					..isHoliday = _HomeState.checkIsHoliday(data['year'], data['numYear'], currentMM, i)
+				;
+
+				if(dayNr == 0){
+					countWeek++;
+					weekDay1.clear();
+				}
+				weekDay1[date.weekday] = RDBDate.clone(rdbDate);
+				dateOfMM[countWeek] = Map.from(weekDay1);
+			}
+
+			firstWeek = dateOfMM.keys.first;
+			DateYear dateYear = new DateYear()
+				..dateOfMM = dateOfMM
+				..year = data['numYear']
+				..currentMM = currentMM
+				..countWeek = countWeek
+				..firstWeek = firstWeek
+			;
+
+			dateYears.add(dateYear);
+		}
+
+		return dateYears;
+	}
+}
+
+class DateYear {
+	Map<int, Map<int, RDBDate>> dateOfMM;
+	int countWeek;
+	int firstWeek;
+	int currentMM;
+	int year;
+
+	DateYear(){
+		dateOfMM = new Map();
 	}
 }
