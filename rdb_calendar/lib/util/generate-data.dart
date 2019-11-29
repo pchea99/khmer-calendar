@@ -1,5 +1,5 @@
-import 'package:rdb_calendar/calendar/calendar-kh.dart';
-import 'package:rdb_calendar/service/service.dart';
+import 'package:rdbCalendar/calendar/calendar-kh.dart';
+import 'package:rdbCalendar/service/service.dart';
 
 class GenerateData{
 	/*Map _month = {

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:rdb_calendar/res/number.dart';
+import 'package:rdbCalendar/res/number.dart';
 
 class ImageLogo{
 	Widget imageLogo(){

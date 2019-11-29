@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:rdb_calendar/res/color.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/color.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
 
 const Color primaryColor = ColorRes.primaryColor;
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:rdb_calendar/model/year.dart';
-import 'package:rdb_calendar/util/string-field.dart';
+import 'package:rdbCalendar/model/year.dart';
+import 'package:rdbCalendar/util/string-field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref{

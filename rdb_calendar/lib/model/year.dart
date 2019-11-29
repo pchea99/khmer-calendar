@@ -1,4 +1,4 @@
-import 'package:rdb_calendar/model/month.dart';
+import 'package:rdbCalendar/model/month.dart';
 
 class Year{
 	Map<String, Month> month;

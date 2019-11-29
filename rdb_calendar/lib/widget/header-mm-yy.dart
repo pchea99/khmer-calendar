@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/widget/text-view.dart';
+import 'package:rdbCalendar/core/config.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/widget/text-view.dart';
 
 class HeaderMMYY{
 	Widget buildHeaderMMYY(Map dateOfMM, int firstWeek, int countWeek) {

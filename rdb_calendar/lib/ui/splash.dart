@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/res/color.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/service/service.dart';
-import 'package:rdb_calendar/shared-pref/shared-pref.dart';
-import 'package:rdb_calendar/ui/home.dart';
-import 'package:rdb_calendar/ui/no-connection.dart';
-import 'package:rdb_calendar/util/check-connection.dart';
-import 'package:rdb_calendar/util/generate-data.dart';
-import 'package:rdb_calendar/util/logging.dart';
-import 'package:rdb_calendar/util/navigate.dart';
+import 'package:rdbCalendar/core/config.dart';
+import 'package:rdbCalendar/res/color.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/service/service.dart';
+import 'package:rdbCalendar/shared-pref/shared-pref.dart';
+import 'package:rdbCalendar/ui/home.dart';
+import 'package:rdbCalendar/ui/no-connection.dart';
+import 'package:rdbCalendar/util/check-connection.dart';
+import 'package:rdbCalendar/util/generate-data.dart';
+import 'package:rdbCalendar/util/logging.dart';
+import 'package:rdbCalendar/util/navigate.dart';
 
 class Splash extends StatefulWidget {
   @override

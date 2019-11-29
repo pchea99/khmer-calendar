@@ -1,4 +1,4 @@
-import 'package:rdb_calendar/util/string-field.dart';
+import 'package:rdbCalendar/util/string-field.dart';
 
 class Month{
 	Map<String, Map> holiday;

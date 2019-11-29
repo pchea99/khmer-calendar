@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:rdb_calendar/core/config.dart';
+import 'package:rdbCalendar/core/config.dart';
 import 'package:sprintf/sprintf.dart';
 
 class RDBCalendar{
