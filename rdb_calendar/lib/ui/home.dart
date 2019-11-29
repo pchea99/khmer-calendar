@@ -2,24 +2,24 @@ import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/calendar/calendar-kh.dart';
-import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/model/rdb-date.dart';
-import 'package:rdb_calendar/model/year.dart';
-import 'package:rdb_calendar/res/color.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/res/string.dart';
-import 'package:rdb_calendar/service/service.dart';
-import 'package:rdb_calendar/shared-pref/shared-pref.dart';
-import 'package:rdb_calendar/ui/about-us.dart';
-import 'package:rdb_calendar/ui/list-days.dart';
-import 'package:rdb_calendar/util/logging.dart';
-import 'package:rdb_calendar/util/navigate.dart';
-import 'package:rdb_calendar/widget/appbar-view.dart';
-import 'package:rdb_calendar/widget/footer.dart';
-import 'package:rdb_calendar/widget/header-mm-yy.dart';
-import 'package:rdb_calendar/widget/text-view.dart';
+import 'package:rdbCalendar/calendar/calendar-kh.dart';
+import 'package:rdbCalendar/core/config.dart';
+import 'package:rdbCalendar/model/rdb-date.dart';
+import 'package:rdbCalendar/model/year.dart';
+import 'package:rdbCalendar/res/color.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/res/string.dart';
+import 'package:rdbCalendar/service/service.dart';
+import 'package:rdbCalendar/shared-pref/shared-pref.dart';
+import 'package:rdbCalendar/ui/about-us.dart';
+import 'package:rdbCalendar/ui/list-days.dart';
+import 'package:rdbCalendar/util/logging.dart';
+import 'package:rdbCalendar/util/navigate.dart';
+import 'package:rdbCalendar/widget/appbar-view.dart';
+import 'package:rdbCalendar/widget/footer.dart';
+import 'package:rdbCalendar/widget/header-mm-yy.dart';
+import 'package:rdbCalendar/widget/text-view.dart';
 
 import 'contact-us.dart';
 
@@ -288,7 +288,6 @@ class _HomeState extends State<Home> {
 				margin: EdgeInsets.all(NumberRes.padding3),
 				color: ColorRes.green,
 				width: NumberRes.width45,
-				height: NumberRes.width45,
 				child: Center(
 					child: _buildHeader(index),
 				),

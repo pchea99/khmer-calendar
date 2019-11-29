@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/core/config.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/widget/text-view.dart';
+import 'package:rdbCalendar/core/config.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/widget/text-view.dart';
 
 class HeaderMMYY{
 	Widget buildHeaderMMYY(Map dateOfMM, int firstWeek, int countWeek) {
@@ -35,7 +35,7 @@ class HeaderMMYY{
 					_getEndMMKh(dateOfMM, countWeek) +" ឆ្នាំ"+ dateOfMM[2][1].animalYY
 				: _getStartMMKh(dateOfMM, firstWeek) +" ឆ្នាំ"+ dateOfMM[2][1].animalYY,
 			TextStyle(
-				fontSize: FontSize.subtitle,
+				fontSize: FontSize.subhead,
 				fontWeight: FontWeight.w500
 			)
 		);
@@ -45,7 +45,7 @@ class HeaderMMYY{
 		return _buildText(
 			getMonthKh[dateOfMM[2][1].mmEn],
 			TextStyle(
-				fontSize: FontSize.subtitle,
+				fontSize: FontSize.subhead,
 				fontWeight: FontWeight.w500
 			)
 		);
@@ -57,7 +57,7 @@ class HeaderMMYY{
 			child: _buildText(
 				"ព.ស​ "+ dateOfMM[countWeek][1].yyKh,
 				TextStyle(
-					fontSize: FontSize.body1,
+					fontSize: FontSize.subhead,
 					fontWeight: FontWeight.w500
 				)
 			),
@@ -71,7 +71,7 @@ class HeaderMMYY{
 				_buildText(
 					getMonthEn[dateOfMM[2][1].mmEn],
 					TextStyle(
-						fontSize: FontSize.body1,
+						fontSize: FontSize.subhead,
 						fontWeight: FontWeight.w500
 					)
 				),
@@ -79,7 +79,7 @@ class HeaderMMYY{
 				_buildText(
 					dateOfMM[2][1].yyEn.toString(),
 					TextStyle(
-						fontSize: FontSize.body1,
+						fontSize: FontSize.subhead,
 						fontWeight: FontWeight.w500
 					)
 				),

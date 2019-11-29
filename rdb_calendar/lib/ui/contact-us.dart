@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/res/string.dart';
-import 'package:rdb_calendar/widget/appbar-view.dart';
-import 'package:rdb_calendar/widget/image-logo.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/res/string.dart';
+import 'package:rdbCalendar/widget/appbar-view.dart';
+import 'package:rdbCalendar/widget/image-logo.dart';
 
 class ContactUs extends StatefulWidget {
   @override

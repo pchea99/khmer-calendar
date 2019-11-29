@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rdb_calendar/model/month.dart';
-import 'package:rdb_calendar/model/year.dart';
-import 'package:rdb_calendar/util/logging.dart';
+import 'package:rdbCalendar/model/month.dart';
+import 'package:rdbCalendar/model/year.dart';
+import 'package:rdbCalendar/util/logging.dart';
 
 class ServiceFS {
 	Future<Year> getMonth(){

@@ -3,16 +3,16 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/res/color.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/res/string.dart';
-import 'package:rdb_calendar/service/service.dart';
-import 'package:rdb_calendar/shared-pref/shared-pref.dart';
-import 'package:rdb_calendar/ui/home.dart';
-import 'package:rdb_calendar/util/logging.dart';
-import 'package:rdb_calendar/util/navigate.dart';
-import 'package:rdb_calendar/widget/text-view.dart';
+import 'package:rdbCalendar/res/color.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/res/string.dart';
+import 'package:rdbCalendar/service/service.dart';
+import 'package:rdbCalendar/shared-pref/shared-pref.dart';
+import 'package:rdbCalendar/ui/home.dart';
+import 'package:rdbCalendar/util/logging.dart';
+import 'package:rdbCalendar/util/navigate.dart';
+import 'package:rdbCalendar/widget/text-view.dart';
 
 class NoConnection extends StatefulWidget {
   @override
@@ -95,7 +95,7 @@ class _NoConnectionState extends State<NoConnection> {
 	void _getMonthData() {
 	  ServiceFS().getMonth().then((data){
 	  	SharedPref.setPref(data);
-	  	Navigate.removeUntil(context, Home());
+	  	Navigate.pushAndRemoveUntil(context, Home());
 	  }).catchError((e){
 	  	Logging.logWarning(e.toString());
 	  });

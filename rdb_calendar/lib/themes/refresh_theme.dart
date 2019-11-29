@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:rdb_calendar/themes/dynamic_theme.dart';
-import 'package:rdb_calendar/themes/themes.dart';
+import 'package:rdbCalendar/themes/dynamic_theme.dart';
+import 'package:rdbCalendar/themes/themes.dart';
 
 void switchFont(BuildContext context, String fontname) async {
   DynamicTheme.of(context).setThemeData(ThemeData(

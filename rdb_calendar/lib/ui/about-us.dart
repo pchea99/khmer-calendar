@@ -2,12 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:rdb_calendar/res/color.dart';
-import 'package:rdb_calendar/res/fontsize.dart';
-import 'package:rdb_calendar/res/number.dart';
-import 'package:rdb_calendar/res/string.dart';
-import 'package:rdb_calendar/widget/appbar-view.dart';
-import 'package:rdb_calendar/widget/image-logo.dart';
+import 'package:rdbCalendar/res/color.dart';
+import 'package:rdbCalendar/res/fontsize.dart';
+import 'package:rdbCalendar/res/number.dart';
+import 'package:rdbCalendar/res/string.dart';
+import 'package:rdbCalendar/widget/appbar-view.dart';
+import 'package:rdbCalendar/widget/image-logo.dart';
 
 class AboutUs extends StatefulWidget {
   @override
