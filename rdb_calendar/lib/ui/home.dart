@@ -487,7 +487,7 @@ class _HomeState extends State<Home> {
 			);
 		});
 		_isGenerate = false;
-		_jumpToCurrentMM(14);
+		_jumpToCurrentMM(13);
 	}
 
 	void _generateCalendarKh(int year, bool isPrevious) {
