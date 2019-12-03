@@ -430,7 +430,7 @@ class _HomeState extends State<Home> {
 		_generateCalendarKh(now.year, false);
 		_jumpToCurrentMM(now.month - 1);
 		Future.delayed(Duration(seconds: 1), (){
-			if((now.month - 1) == 10){
+			if((now.month - 1) >= 10){
 				_onNext();
 			}
 		});
@@ -487,7 +487,7 @@ class _HomeState extends State<Home> {
 			);
 		});
 		_isGenerate = false;
-		_jumpToCurrentMM(13);
+		_jumpToCurrentMM(14);
 	}
 
 	void _generateCalendarKh(int year, bool isPrevious) {
