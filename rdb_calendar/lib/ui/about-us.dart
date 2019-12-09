@@ -48,7 +48,6 @@ class _AboutUsState extends State<AboutUs> {
 
   Widget _buildBody() {
     double width = MediaQuery.of(context).size.width;
-    print("----- $width");
 
     return Container(
       padding: EdgeInsets.all(NumberRes.padding8),
