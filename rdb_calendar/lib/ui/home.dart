@@ -145,9 +145,9 @@ class _HomeState extends State<Home> {
 		  		child: Column(
 		  			children: <Widget>[
 							_buildHeaderDate(
-									dateOfMM: dateOfMM,
-									countWeek: countWeek,
-									firstWeek: firstWeek
+								dateOfMM: dateOfMM,
+								countWeek: countWeek,
+								firstWeek: firstWeek
 							),
 		  				SizedBox(height: NumberRes.padding6),
 		  				_buildViewHeader(),
@@ -432,6 +432,8 @@ class _HomeState extends State<Home> {
 		Future.delayed(Duration(seconds: 1), (){
 			if((now.month - 1) >= 10){
 				_onNext();
+			}else if(now.month < 3){
+				_onPrevious();
 			}
 		});
 	}
@@ -453,13 +455,13 @@ class _HomeState extends State<Home> {
 		List<DateYear> dateYears = await compute(_generateDateNP, data);
 		dateYears.forEach((date){
 			_pages.add(
-					_buildBody(
-							dateOfMM: date.dateOfMM,
-							year: date.year,
-							currentMM: date.currentMM,
-							countWeek: date.countWeek,
-							firstWeek: date.firstWeek
-					)
+				_buildBody(
+					dateOfMM: date.dateOfMM,
+					year: date.year,
+					currentMM: date.currentMM,
+					countWeek: date.countWeek,
+					firstWeek: date.firstWeek
+				)
 			);
 		});
 		_isGenerate = false;
@@ -477,13 +479,13 @@ class _HomeState extends State<Home> {
 		dateYears.sort((l, r)=> r.currentMM - l.currentMM);
 		dateYears.forEach((date){
 			_pages.insert(0,
-					_buildBody(
-							dateOfMM: date.dateOfMM,
-							year: date.year,
-							currentMM: date.currentMM,
-							countWeek: date.countWeek,
-							firstWeek: date.firstWeek
-					)
+				_buildBody(
+					dateOfMM: date.dateOfMM,
+					year: date.year,
+					currentMM: date.currentMM,
+					countWeek: date.countWeek,
+					firstWeek: date.firstWeek
+				)
 			);
 		});
 		_isGenerate = false;

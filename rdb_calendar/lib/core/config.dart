@@ -1,4 +1,4 @@
-bool isGenerate = false;
+bool isGenerate = true;
 
 Map getHashAnimalYear = {
 	"01": "ជូត",
