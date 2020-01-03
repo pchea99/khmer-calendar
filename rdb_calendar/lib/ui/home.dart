@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
 						_onNext();
 					}
 					if (pageId == 2) {
-						_onPrevious();
+						_onPrevious(false);
 					}
 				},
 				controller: _controller,
@@ -184,9 +184,9 @@ class _HomeState extends State<Home> {
 		_generateNextOneYear();
 	}
 
-	void _onPrevious() {
+	void _onPrevious(bool isFirst) {
 		_lowerCountYY--;
-		_generatePreviousOneYear();
+		_generatePreviousOneYear(isFirst);
 	}
 
 	Widget _buildViewHeader() {
@@ -433,7 +433,7 @@ class _HomeState extends State<Home> {
 			if((now.month - 1) >= 10){
 				_onNext();
 			}else if(now.month < 3){
-				_onPrevious();
+				_onPrevious(true);
 			}
 		});
 	}
@@ -468,7 +468,7 @@ class _HomeState extends State<Home> {
 		_onSetState();
 	}
 
-	void _generatePreviousOneYear() async {
+	void _generatePreviousOneYear(bool isFirst) async {
 		_isGenerate = true;
 		_onSetState();
 		Map data = {
@@ -489,7 +489,11 @@ class _HomeState extends State<Home> {
 			);
 		});
 		_isGenerate = false;
-		_jumpToCurrentMM(13);
+		if(isFirst != null && isFirst) {
+			_jumpToCurrentMM(11 + DateTime.now().month);
+		}else{
+			_jumpToCurrentMM(13);
+		}
 	}
 
 	void _generateCalendarKh(int year, bool isPrevious) {
