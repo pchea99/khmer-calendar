@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
 						_onNext();
 					}
 					if (pageId == 2) {
-						_onPrevious();
+						_onPrevious(false);
 					}
 				},
 				controller: _controller,
@@ -145,9 +145,9 @@ class _HomeState extends State<Home> {
 		  		child: Column(
 		  			children: <Widget>[
 							_buildHeaderDate(
-									dateOfMM: dateOfMM,
-									countWeek: countWeek,
-									firstWeek: firstWeek
+								dateOfMM: dateOfMM,
+								countWeek: countWeek,
+								firstWeek: firstWeek
 							),
 		  				SizedBox(height: NumberRes.padding6),
 		  				_buildViewHeader(),
@@ -184,9 +184,9 @@ class _HomeState extends State<Home> {
 		_generateNextOneYear();
 	}
 
-	void _onPrevious() {
+	void _onPrevious(bool isFirst) {
 		_lowerCountYY--;
-		_generatePreviousOneYear();
+		_generatePreviousOneYear(isFirst);
 	}
 
 	Widget _buildViewHeader() {
@@ -432,6 +432,8 @@ class _HomeState extends State<Home> {
 		Future.delayed(Duration(seconds: 1), (){
 			if((now.month - 1) >= 10){
 				_onNext();
+			}else if(now.month < 3){
+				_onPrevious(true);
 			}
 		});
 	}
@@ -453,20 +455,20 @@ class _HomeState extends State<Home> {
 		List<DateYear> dateYears = await compute(_generateDateNP, data);
 		dateYears.forEach((date){
 			_pages.add(
-					_buildBody(
-							dateOfMM: date.dateOfMM,
-							year: date.year,
-							currentMM: date.currentMM,
-							countWeek: date.countWeek,
-							firstWeek: date.firstWeek
-					)
+				_buildBody(
+					dateOfMM: date.dateOfMM,
+					year: date.year,
+					currentMM: date.currentMM,
+					countWeek: date.countWeek,
+					firstWeek: date.firstWeek
+				)
 			);
 		});
 		_isGenerate = false;
 		_onSetState();
 	}
 
-	void _generatePreviousOneYear() async {
+	void _generatePreviousOneYear(bool isFirst) async {
 		_isGenerate = true;
 		_onSetState();
 		Map data = {
@@ -477,17 +479,21 @@ class _HomeState extends State<Home> {
 		dateYears.sort((l, r)=> r.currentMM - l.currentMM);
 		dateYears.forEach((date){
 			_pages.insert(0,
-					_buildBody(
-							dateOfMM: date.dateOfMM,
-							year: date.year,
-							currentMM: date.currentMM,
-							countWeek: date.countWeek,
-							firstWeek: date.firstWeek
-					)
+				_buildBody(
+					dateOfMM: date.dateOfMM,
+					year: date.year,
+					currentMM: date.currentMM,
+					countWeek: date.countWeek,
+					firstWeek: date.firstWeek
+				)
 			);
 		});
 		_isGenerate = false;
-		_jumpToCurrentMM(13);
+		if(isFirst != null && isFirst) {
+			_jumpToCurrentMM(11 + DateTime.now().month);
+		}else{
+			_jumpToCurrentMM(13);
+		}
 	}
 
 	void _generateCalendarKh(int year, bool isPrevious) {

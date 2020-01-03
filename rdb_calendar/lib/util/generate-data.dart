@@ -189,7 +189,28 @@ class GenerateData{
 					'index': 2
 				}
 			},
-			'other': {}
+			'other': {
+				'24': {
+					'en': "Chinese New Year's Eve",
+					'kh': "ថ្ងៃសែនចូលឆ្នាំចិន",
+					'index': 1
+				},
+				'25': {
+					'en': "Chinese New Year Day",
+					'kh': "ចូលឆ្នាំចិន​ ឆ្នាំជូត​",
+					'index': 2
+				},
+				'26': {
+					'en': "Chinese New Year Day",
+					'kh': "ចូលឆ្នាំចិន​ ឆ្នាំជូត",
+					'index': 3
+				},
+				'27': {
+					'en': "Chinese New Year Day",
+					'kh': "ចូលឆ្នាំចិន​ ឆ្នាំជូត",
+					'index': 4
+				}
+			}
 		},
 		'february': {
 			'holiday': {},
@@ -253,7 +274,7 @@ class GenerateData{
 				'20': {
 					'en': "National Day of Remembrance",
 					'kh': "ទិវាជាតិនៃការចងចាំ",
-					'index': 4
+					'index': 1
 				},
 			}
 		},
