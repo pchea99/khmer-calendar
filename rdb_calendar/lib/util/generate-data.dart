@@ -209,6 +209,11 @@ class GenerateData{
 					'en': "Chinese New Year Day",
 					'kh': "ចូលឆ្នាំចិន​ ឆ្នាំជូត",
 					'index': 4
+				},
+				'27': {
+					'en': "Chinese New Year Day",
+					'kh': "ចូលឆ្នាំចិន​ ឆ្នាំជូត",
+					'index': 5
 				}
 			}
 		},
