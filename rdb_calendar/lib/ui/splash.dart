@@ -22,6 +22,7 @@ class _SplashState extends State<Splash> {
 	void initState() {
 		super.initState();
 		_init();
+		_getMonth();
 		if(isGenerate) {
 			GenerateData().createData(2020);
 		}
