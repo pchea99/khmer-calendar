@@ -432,7 +432,7 @@ class _HomeState extends State<Home> {
 		Future.delayed(Duration(seconds: 1), (){
 			if((now.month - 1) >= 10){
 				_onNext();
-			}else if(now.month < 3){
+			}else if(now.month < 4){
 				_onPrevious(true);
 			}
 		});
