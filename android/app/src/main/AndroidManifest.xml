@@ -6,7 +6,7 @@
 
        <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="calendar rdb"
+        android:label="ARDB Calendar"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

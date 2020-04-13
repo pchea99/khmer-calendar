@@ -39,13 +39,13 @@ class _ContactUsState extends State<ContactUs> {
 			  Column(
 				  mainAxisAlignment: MainAxisAlignment.start,
 				  children: <Widget>[
-					  _buildRowView("Phone", "(855) 23 220 810 / 811"),
-					  _buildRowView("Fax", "(855) 23 224 628"),
-					  _buildRowView("Email", "admin@rdb.com.kh"),
-					  _buildRowView("Website", "www.rdb.com.kh"),
-					  _buildRowView("FB", "Rural Development Bank of Cambodia"),
-					  _buildRowView("Youtube", "Rural Development Bank"),
-					  _buildRowView("Linkedin", "Rural Development Bank (RDB)"),
+            _buildRowView("Phone", "(855) 23 220 810 / 811"),
+            _buildRowView("Fax", "(855) 23 224 628"),
+            _buildRowView("Email", "admin@ardb.com.kh"),
+            _buildRowView("Website", "www.ardb.com.kh"),
+            _buildRowView("FB", "Agricultural And Rural Development Bank of Cambodia"),
+            _buildRowView("Youtube", "Agricultural And Rural Development Bank"),
+            _buildRowView("Linkedin", "Agricultural And Rural Development Bank (ARDB)"),
 				  ],
 			  )
 		  ],
