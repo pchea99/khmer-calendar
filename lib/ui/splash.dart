@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rdbCalendar/core/config.dart';
-import 'package:rdbCalendar/res/color.dart';
-import 'package:rdbCalendar/res/number.dart';
 import 'package:rdbCalendar/service/service.dart';
 import 'package:rdbCalendar/shared-pref/shared-pref.dart';
 import 'package:rdbCalendar/ui/home.dart';
