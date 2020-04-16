@@ -30,8 +30,6 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Container(
-	    padding: EdgeInsets.only(top: NumberRes.padding22),
-	    color: ColorRes.white,
 	    child: Image.asset(
 		    'assets/images/rdb_calendar.jpg',
 		    fit: BoxFit.fill,
