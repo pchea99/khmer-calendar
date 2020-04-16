@@ -33,7 +33,7 @@ class _SplashState extends State<Splash> {
 	    padding: EdgeInsets.only(top: NumberRes.padding22),
 	    color: ColorRes.white,
 	    child: Image.asset(
-		    'assets/images/rdb-calendar.png',
+		    'assets/images/rdb_calendar.jpg',
 		    fit: BoxFit.fill,
 	    ),
     );
