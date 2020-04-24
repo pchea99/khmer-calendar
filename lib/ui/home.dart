@@ -138,30 +138,28 @@ class _HomeState extends State<Home> {
 		int year,
 		int currentMM
 	}) {
-		return Center(
-		  child: SingleChildScrollView(
-		  	child: Container(
-		  		margin: EdgeInsets.all(NumberRes.padding8),
-		  		child: Column(
-		  			children: <Widget>[
+		return SingleChildScrollView(
+			child: Container(
+				margin: EdgeInsets.all(NumberRes.padding8),
+				child: Column(
+					children: <Widget>[
 							_buildHeaderDate(
 								dateOfMM: dateOfMM,
 								countWeek: countWeek,
 								firstWeek: firstWeek
 							),
-		  				SizedBox(height: NumberRes.padding6),
-		  				_buildViewHeader(),
-		  				_buildBoxContent(
+						SizedBox(height: NumberRes.padding6),
+						_buildViewHeader(),
+						_buildBoxContent(
 								dateOfMM: dateOfMM,
 								countWeek: countWeek,
 								firstWeek: firstWeek
 							),
-		  				Footer().buildFooter(_year.getMonth(year), currentMM),
-		  				SizedBox(height: NumberRes.padding12)
-		  			],
-		  		),
-		  	),
-		  ),
+						Footer().buildFooter(_year.getMonth(year), currentMM),
+						SizedBox(height: NumberRes.padding12)
+					],
+				),
+			),
 		);
 	}
 
@@ -492,7 +490,7 @@ class _HomeState extends State<Home> {
 		if(isFirst != null && isFirst) {
 			_jumpToCurrentMM(11 + DateTime.now().month);
 		}else{
-			_jumpToCurrentMM(13);
+			_jumpToCurrentMM(14);
 		}
 	}
 
