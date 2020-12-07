@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80241fb2-3e01-4c12-902e-8e5eecc30c06" name="Default Changelist" comment="">
+    <list default="true" id="80241fb2-3e01-4c12-902e-8e5eecc30c06" name="Default Changelist" comment="pk: upgrade code rdb calendar">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/generate-data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/generate-data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/splash.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587694091648</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="pk: upgrade code rdb calendar">
+      <created>1607305860250</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607305860250</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +199,36 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pk: upgrade code rdb calendar" />
     <option name="LAST_COMMIT_MESSAGE" value="pk: upgrade code rdb calendar" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="236" y="187" key="CommitChangelistDialog2" timestamp="1607307356718">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state x="236" y="187" key="CommitChangelistDialog2/0.25.2560.1330@0.25.2560.1330" timestamp="1607307356718" />
+    <state width="1478" height="364" key="GridCell.Tab.0.bottom" timestamp="1607306536277">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state width="1478" height="364" key="GridCell.Tab.0.bottom/0.25.2560.1330@0.25.2560.1330" timestamp="1607306536277" />
+    <state width="1478" height="364" key="GridCell.Tab.0.center" timestamp="1607306536277">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state width="1478" height="364" key="GridCell.Tab.0.center/0.25.2560.1330@0.25.2560.1330" timestamp="1607306536277" />
+    <state width="1478" height="364" key="GridCell.Tab.0.left" timestamp="1607306536277">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state width="1478" height="364" key="GridCell.Tab.0.left/0.25.2560.1330@0.25.2560.1330" timestamp="1607306536277" />
+    <state width="1478" height="364" key="GridCell.Tab.0.right" timestamp="1607306536277">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state width="1478" height="364" key="GridCell.Tab.0.right/0.25.2560.1330@0.25.2560.1330" timestamp="1607306536277" />
+    <state x="265" y="364" key="Vcs.Push.Dialog.v2" timestamp="1607305861935">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state x="265" y="364" key="Vcs.Push.Dialog.v2/0.25.2560.1330@0.25.2560.1330" timestamp="1607305861935" />
+    <state x="501" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607307415195">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state x="501" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.2560.1330@0.25.2560.1330" timestamp="1607307415195" />
   </component>
   <component name="masterDetails">
     <states>
