@@ -21,17 +21,5 @@ void switchFont(BuildContext context, String fontname) async {
         fontSize: 14.0
       ),
     ),
-    textTheme: TextTheme(
-      title: TextStyle(
-        fontSize: 16.0,
-        color: Colors.white
-      ),
-      subhead: TextStyle(
-        fontSize: 14.0,
-      ),
-      headline: TextStyle(
-        fontSize: 18.0,
-      )
-    ),
     fontFamily: fontname));
 }

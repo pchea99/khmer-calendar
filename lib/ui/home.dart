@@ -106,19 +106,19 @@ class _HomeState extends State<Home> {
 				items: [
 					BottomNavigationBarItem(
 						icon: new Icon(Icons.home),
-						title: new Text(StringRes.home),
+						label: StringRes.home,
 					),
 					BottomNavigationBarItem(
 						icon: new Icon(Icons.people),
-						title: new Text(StringRes.aboutUs),
+						label: StringRes.aboutUs,
 					),
 					BottomNavigationBarItem(
 						icon: Icon(Icons.contacts),
-						title: Text(StringRes.contactUs)
+						label: StringRes.contactUs
 					),
 					BottomNavigationBarItem(
 						icon: Icon(Icons.calendar_today),
-						title: Text(StringRes.event)
+						label: StringRes.event
 					)
 				],
 			),

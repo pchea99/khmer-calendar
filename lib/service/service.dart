@@ -10,17 +10,17 @@ class ServiceFS {
 		Completer completer = new Completer<Year>();
 		Year year = new Year();
 		Logging.logInfo("read collection months");
-		Firestore.instance.collection('calendar').getDocuments().then((snap){
-			if(snap.documents != null && snap.documents.isNotEmpty) {
-				snap.documents.forEach((doc) {
+    FirebaseFirestore.instance.collection('calendar').get().then((snap){
+			if(snap.docs != null && snap.docs.isNotEmpty) {
+				snap.docs.forEach((doc) {
 					Month month = new Month();
-					doc.data.forEach((k, v){
+					doc.data().forEach((k, v){
 						month.holiday[k] = v['holiday'];
 						if(v['other'] != null && v['other'].isNotEmpty){
 							month.other[k] = v['other'];
 						}
 					});
-					year.month[doc.documentID] = month;
+					year.month[doc.id] = month;
 				});
 				Logging.logInfo("read collection months completed $year");
 				completer.complete(year);
@@ -37,8 +37,8 @@ class ServiceFS {
 	}
 
 	void createData(String key, Map data){
-		Firestore.instance.document('calendar/' + key)
-			.setData(Map.from(data))
+    FirebaseFirestore.instance.doc('calendar/' + key)
+			.set(Map.from(data))
 			.catchError((e){
 				Logging.logError(e.toString());
 			});

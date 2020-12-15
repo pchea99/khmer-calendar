@@ -26,18 +26,6 @@ ThemeData appTheme = new ThemeData(
       fontSize: FontSize.body2
     ),
   ),
-  textTheme: TextTheme(
-    title: TextStyle(
-      fontSize: FontSize.body2,
-      color: Colors.white
-    ),
-    subhead: TextStyle(
-      fontSize: FontSize.body1,
-    ),
-    headline: TextStyle(
-      fontSize: FontSize.subhead,
-    )
-  ),
-  fontFamily: GlobalConfiguration().getString("font_kh"));
+  fontFamily: GlobalConfiguration().get("font_kh"));
 
 const double elevation = 0.5;
