@@ -16,11 +16,38 @@ class GenerateData{
 					'index': 2
 				}
 			},
-			'other': {}
+			'other': {
+        '28': {
+          'en': "Meak Bochea",
+          'kh': "ពិធីបុណ្យមាឃបូជា",
+          'index': 1
+        }
+      }
 		},
 		'february': {
 			'holiday': {},
-			'other': {}
+			'other': {
+        '11-12-13-14': {
+          'en': "Chinese New Year",
+          'kh': "ពិធីបុណ្យចូលឆ្នាំចិន",
+          'index': 1
+        },
+        '14': {
+          'en': "Valentine's Day",
+          'kh': "ថ្ងៃបុណ្យនៃសេចក្តីស្រលាញ់",
+          'index': 2
+        },
+        '21': {
+          'en': "National Day on Maternal, Newborn and Child Health",
+          'kh': "ទិវាជាតិសុខភាពមាតា និងទារក",
+          'index': 3
+        },
+        '26': {
+          'en': "Spirit Parade",
+          'kh': "ហែអ្នកតាចិន",
+          'index': 4
+        },
+      }
 		},
 		'march': {
 			'holiday': {
@@ -30,7 +57,18 @@ class GenerateData{
 					'index': 1
 				},
 			},
-			'other': {}
+			'other': {
+        '3': {
+          'en': "National Culture Day",
+          'kh': "ទិវាវប្បធម៌ជាតិ",
+          'index': 1
+        },
+        '24': {
+          'en': "World Tuberculosis Day",
+          'kh': "ទិវាពិភពលោកកំចាត់ជម្ងឺរបេង",
+          'index': 2
+        },
+      }
 		},
 		'april': {
 			'holiday': {
@@ -50,7 +88,23 @@ class GenerateData{
 					'index': 3
 				},
 			},
-			'other': {}
+			'other': {
+        '5': {
+          'en': "Tomb-Sweeping Day - Qingming Festival",
+          'kh': "ឆេងម៉េង",
+          'index': 1
+        },
+        '7': {
+          'en': "World Health Day",
+          'kh': "ទិវាសុខភាពពិភពលោក",
+          'index': 2
+        },
+        '30': {
+          'en': "Cambodia joined The Association of Southeast Asian Nation - ASEAN",
+          'kh': "កម្ពុជាចូលជាសមាជិកអាស៊ាន",
+          'index': 3
+        },
+      }
 		},
 		'may': {
 			'holiday': {
@@ -65,7 +119,23 @@ class GenerateData{
 					'index': 2
 				},
 			},
-			'other': {}
+			'other': {
+        '3': {
+          'en': "World Press Freedom Day",
+          'kh': "ទិវាសេរីភាពសារពត៌មានពិភពលោក",
+          'index': 1
+        },
+        '8': {
+          'en': "World Red Cross and Red Crescent Day",
+          'kh': "ទិវាពិភពលោកកាកបាទក្រហម អឌ្ឍចន្ទក្រហម",
+          'index': 2
+        },
+        '20': {
+          'en': "National Day of Remembrance",
+          'kh': "ទិវាជាតិនៃការចងចាំ",
+          'index': 3
+        },
+      }
 		},
 		'june': {
 			'holiday': {
@@ -75,15 +145,78 @@ class GenerateData{
 					'index': 1
 				},
 			},
-			'other': {}
+			'other': {
+        '1': {
+          'en': "International Children's Day",
+          'kh': "ទិវាកុមារអន្តរជាតិ",
+          'index': 1
+        },
+        '5': {
+          'en': "National and World Environment Day",
+          'kh': "ទិវាបរិស្ថានជាតិ និងបរស្ថានពិភពលោក",
+          'index': 2
+        },
+        '12': {
+          'en': "Happy World Day Against Child Labour",
+          'kh': "ទិវាពិភពលោកប្រឆាំងពលកម្មកុមារ",
+          'index': 3
+        },
+        '14': {
+          'en': "Sticky Rice Dumplings - Zongzi",
+          'kh': "សែននំចាំង",
+          'index': 4
+        },
+        '15': {
+          'en': "International Court of Justice in The Hague declared Cambodia is the owner of the Preah Vihear Temple",
+          'kh': "តុលាការយុត្តិធម៌អន្តរជាតិក្រុងឡាអេ សម្រចឱ្យកម្ពុជាជាម្ចាស់កម្មសិទ្ធិ លើប្រាសាទព្រះវិហារ",
+          'index': 5
+        },
+        '26': {
+          'en': "International Day Against Drug Abuse and Illicit Trafficking",
+          'kh': "ទិវាអន្តរជាតិប្រយុទ្ធប្រឆាំងគ្រឿងញៀន",
+          'index': 6
+        },
+      }
 		},
 		'july': {
 			'holiday': {},
-			'other': {}
+			'other': {
+        '3': {
+          'en': "Cambodia joined UNESCO",
+          'kh': "កម្ពុជាចូលជាសមាជិកអង្គការយូណេស្កូ",
+          'index': 1
+        },
+        '7': {
+          'en': "Prasat Preah Vihear recognized as UNESCO's World Heritage",
+          'kh': "ប្រាសាទព្រះវិហារ ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌពិភពលោក នៃអង្គការពិភពលោកយូណេស្កូ",
+          'index': 2
+        },
+        '8': {
+          'en': "Prasat Sambor Prei Kuk recognized as UNESCO's World Heritage",
+          'kh': "ប្រាសាទសំបូរព្រៃគុក ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌពិភពលោក នៃអង្គការពិភពលោកយូណេស្កូ",
+          'index': 3
+        },
+        '25': {
+          'en': "Beginning of Buddhist Lent",
+          'kh': "ចូលព្រះវស្សា",
+          'index': 4
+        },
+        '31': {
+          'en': "The archives of Tuol Sleng Genocide Museum are registered as part of the Memory of the World by UNESCO",
+          'kh': "សារមន្ទីរឧក្រិដ្ឋកម្មប្រល័យពូជសាសន៍ទួលស្លែង ត្រូវបានចុះក្នុងបញ្ជីស្មារតីចងចាំ នៃអង្គការពិភពលោកយូណេស្កូ",
+          'index': 5
+        },
+      }
 		},
 		'august': {
 			'holiday': {},
-			'other': {}
+			'other': {
+        '22': {
+          'en': "Ghost Festival",
+          'kh': "សែនក្បាលទឹក",
+          'index': 1
+        },
+      }
 		},
 		'september': {
 			'holiday': {
@@ -93,7 +226,18 @@ class GenerateData{
 					'index': 1
 				},
 			},
-			'other': {}
+			'other': {
+        '21': {
+          'en': "Mid-Autumn Festival",
+          'kh': "សែនលោកខែ",
+          'index': 1
+        },
+        '22': {
+          'en': "Kan Ben Day",
+          'kh': "ថ្ងៃកាន់បិណ្ឌ",
+          'index': 2
+        },
+      }
 		},
 		'october': {
 			'holiday': {
@@ -113,7 +257,23 @@ class GenerateData{
 					'index': 3
 				}
 			},
-			'other': {}
+			'other': {
+        '21': {
+          'en': "Ending of Buddhist Lent",
+          'kh': "ចេញព្រះវស្សា",
+          'index': 1
+        },
+        '22': {
+          'en': "Kathen Kal",
+          'kh': "កឋិនកាល",
+          'index': 2
+        },
+        '23': {
+          'en': "Paris Peace Agreement Day",
+          'kh': "ទិវារំលឹកខួបនៃកិច្ចព្រមព្រៀងសន្តិភាពទីក្រុងប៉ារិស",
+          'index': 3
+        },
+      }
 		},
 		'november': {
 			'holiday': {
@@ -128,11 +288,63 @@ class GenerateData{
           'index': 2
         }
 			},
-			'other': {}
+			'other': {
+        '7': {
+          'en': "Royal Ballet of Cambodia inducted into the Representative List of the Intangible Cultural Heritage of Humanity",
+          'kh': "របាំព្រះរាជទ្រព្យ ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ",
+          'index': 1
+        },
+        '25': {
+          'en': "Khmer Shadow Theatre inducted into the Representative List of the Intangible Cultural Heritage of Humanity",
+          'kh': "ល្ខោនស្រមោលស្បែក ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ",
+          'index': 2
+        },
+        '28': {
+          'en': "Khmer Masked Theatre inducted into the Representative List of the Intangible Cultural Heritage in Need of Urgent Safeguarding",
+          'kh': "ល្ខោនខោល ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ",
+          'index': 3
+        },
+        '30': {
+          'en': "Chapei Dang Veng inducted into the Representative List of the Intangible Cultural Heritage in Need of Urgent Safeguarding",
+          'kh': "ចាប៉ីដងវែង ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ",
+          'index': 4
+        },
+      }
 		},
 		'december': {
 			'holiday': {},
-			'other': {}
+			'other': {
+        '2': {
+          'en': "Tug of War inducted into the Representative List of the Intangible Cultural Heritage of Humanity",
+          'kh': "ល្បែងទាញព្រ័ត្រ ត្រូវបានចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ",
+          'index': 1
+        },
+        '10': {
+          'en': "Human Rights Day",
+          'kh': "ទិវាសិទ្ធិមនុស្សអន្តរជាតិ",
+          'index': 2
+        },
+        '14': {
+          'en': "Angkor Wat recognized as UNESCO's World Heritage List",
+          'kh': "ប្រាសាទអង្គរវត្ត ត្រូវបានបញ្ចូលក្នុងបញ្ជីបេតិកភណ្ឌពិភពលោក",
+          'index': 3
+        },
+        '14 ': {
+          'en': "Cambodia became a member of the United Nations",
+          'kh': "កម្ពុជាចូលជាសមាជិកអង្គការសហប្រជាជាតិ",
+          'index': 4
+        },
+        '21': {
+          'en': "Winter Solstice Festival",
+          'kh': "សែននំអ៉ី",
+          'index': 5
+        },
+        '25': {
+          'en': "Christmas Day",
+          'kh': "បុណ្យគ្រិស្តម៉ាស",
+          'index': 6
+        },
+      }
 		},
 	};
 

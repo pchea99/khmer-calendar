@@ -1,7 +1,7 @@
 name: rdbCalendar
 description: A new Flutter application.
 
-version: 1.0.0+18
+version: 1.0.0+20
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
