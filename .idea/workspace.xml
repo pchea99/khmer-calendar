@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80241fb2-3e01-4c12-902e-8e5eecc30c06" name="Default Changelist" comment="pk: upgrade code rdb calendar ios">
+    <list default="true" id="80241fb2-3e01-4c12-902e-8e5eecc30c06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/generate-data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/generate-data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +14,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[1222dee8]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -258,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608005017871</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="pk: upgrade code rdb calendar ios">
+      <created>1608261740977</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1608261740977</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,26 +285,26 @@
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
     <state x="361" y="479" key="#com.intellij.fileTypes.FileTypeChooser/0.25.2560.1330@0.25.2560.1330" timestamp="1607998566040" />
-    <state x="236" y="187" key="CommitChangelistDialog2" timestamp="1608175001574">
+    <state x="236" y="187" key="CommitChangelistDialog2" timestamp="1608261740360">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state x="236" y="187" key="CommitChangelistDialog2/0.25.2560.1330@0.25.2560.1330" timestamp="1608175001574" />
-    <state width="1478" height="364" key="GridCell.Tab.0.bottom" timestamp="1608261336771">
+    <state x="236" y="187" key="CommitChangelistDialog2/0.25.2560.1330@0.25.2560.1330" timestamp="1608261740360" />
+    <state width="1478" height="364" key="GridCell.Tab.0.bottom" timestamp="1608261779740">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state width="1478" height="364" key="GridCell.Tab.0.bottom/0.25.2560.1330@0.25.2560.1330" timestamp="1608261336771" />
-    <state width="1478" height="364" key="GridCell.Tab.0.center" timestamp="1608261336770">
+    <state width="1478" height="364" key="GridCell.Tab.0.bottom/0.25.2560.1330@0.25.2560.1330" timestamp="1608261779740" />
+    <state width="1478" height="364" key="GridCell.Tab.0.center" timestamp="1608261779739">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state width="1478" height="364" key="GridCell.Tab.0.center/0.25.2560.1330@0.25.2560.1330" timestamp="1608261336770" />
-    <state width="1478" height="364" key="GridCell.Tab.0.left" timestamp="1608261336769">
+    <state width="1478" height="364" key="GridCell.Tab.0.center/0.25.2560.1330@0.25.2560.1330" timestamp="1608261779739" />
+    <state width="1478" height="364" key="GridCell.Tab.0.left" timestamp="1608261779739">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state width="1478" height="364" key="GridCell.Tab.0.left/0.25.2560.1330@0.25.2560.1330" timestamp="1608261336769" />
-    <state width="1478" height="364" key="GridCell.Tab.0.right" timestamp="1608261336770">
+    <state width="1478" height="364" key="GridCell.Tab.0.left/0.25.2560.1330@0.25.2560.1330" timestamp="1608261779739" />
+    <state width="1478" height="364" key="GridCell.Tab.0.right" timestamp="1608261779739">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state width="1478" height="364" key="GridCell.Tab.0.right/0.25.2560.1330@0.25.2560.1330" timestamp="1608261336770" />
+    <state width="1478" height="364" key="GridCell.Tab.0.right/0.25.2560.1330@0.25.2560.1330" timestamp="1608261779739" />
     <state x="250" y="377" key="IDE.errors.dialog" timestamp="1607998871991">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
@@ -311,10 +313,10 @@
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
     <state x="142" y="238" key="SettingsEditor/0.25.2560.1330@0.25.2560.1330" timestamp="1607998511209" />
-    <state x="265" y="364" key="Vcs.Push.Dialog.v2" timestamp="1608005019015">
+    <state x="265" y="364" key="Vcs.Push.Dialog.v2" timestamp="1608261743774">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>
-    <state x="265" y="364" key="Vcs.Push.Dialog.v2/0.25.2560.1330@0.25.2560.1330" timestamp="1608005019015" />
+    <state x="265" y="364" key="Vcs.Push.Dialog.v2/0.25.2560.1330@0.25.2560.1330" timestamp="1608261743774" />
     <state x="501" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607307415195">
       <screen x="0" y="25" width="2560" height="1330" />
     </state>

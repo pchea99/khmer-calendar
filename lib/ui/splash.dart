@@ -30,7 +30,7 @@ class _SplashState extends State<Splash> {
     return Container(
 	    child: Image.asset(
 		    'assets/images/rdb_calendar.jpg',
-		    fit: BoxFit.fill,
+		    fit: BoxFit.cover,
 	    ),
     );
   }
