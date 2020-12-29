@@ -55,10 +55,9 @@ class _AboutUsState extends State<AboutUs> {
         children: <Widget>[
           ImageLogo().imageLogo(),
           Container(
-            height: NumberRes.width235,
             child: Image.asset(
               'assets/images/about_rdb.png',
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
             ),
           ),
           Row(

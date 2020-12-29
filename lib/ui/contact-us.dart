@@ -34,6 +34,10 @@ class _ContactUsState extends State<ContactUs> {
 			  Text(
 				  "អគារលេខ 9-13 ផ្លូវលេខ7 សង្កាត់ចតុមុខ ប្រអប់សំបុត្រលេខ 1410 ភ្នំពេញ កម្ពុជា",
 				  textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16
+          ),
 			  ),
 			  SizedBox(height: NumberRes.padding8),
 			  Column(
@@ -60,7 +64,13 @@ class _ContactUsState extends State<ContactUs> {
 	    child: Row(
 		  children: <Widget>[
 			  Expanded(
-				  child: Text(lbl),
+				  child: Text(
+            lbl,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 15
+            ),
+          ),
 				  flex: 2,
 			  ),
 			  Expanded(
@@ -68,7 +78,13 @@ class _ContactUsState extends State<ContactUs> {
 				  flex: 1,
 			  ),
 			  Expanded(
-				  child: Text(value),
+				  child: Text(
+            value,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 15
+            ),
+          ),
 				  flex: 8,
 			  ),
 		  ]
