@@ -48,7 +48,7 @@ android {
         targetSdkVersion 29
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
-        versionName '1.0.7'
+        versionName '1.0.9'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

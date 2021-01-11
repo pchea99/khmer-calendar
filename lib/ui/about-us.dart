@@ -15,6 +15,12 @@ class AboutUs extends StatefulWidget {
 }
 
 class _AboutUsState extends State<AboutUs> {
+  final String _aboutUs = "ធនាគារអភិវឌ្ឍន៍ជនបទ (អេ អ ឌី​ ប៊ី) គឺជាធនាគាររដ្ឋដែលបង្កើតឡើងដោយ"
+    "រាជរដ្ឋាភិបាលកម្ពុជា ដើម្បីចូលរួមអនុវត្ត គោលនយោបាយរបស់រាជរដ្ឋាភិបាល ក្នុងវិស័យកសិកម្ម និងសេដ្ឋកិច្ចជនបទ "
+    "តាមរយៈការផ្តល់ហិរញ្ញប្បទានដល់តួអង្គ ក្នុងខ្សែច្រវ៉ាក់ផលិតកម្មកសិកម្មរួមមាន អ្នកផលិតរហូត "
+    "ដល់ក្រុមហ៊ុនកែច្នៃនិងនាំចេញ ដែលអាចបំពេញនូវកង្វះខាតរវាងតម្រូវការនិង ការផ្គត់ផ្គង់សេវាហិរញ្ញវត្ថុ "
+    "នៅតំបន់ជនបទ សំដៅរួមចំណែកបង្កើនជីវភាព រស់នៅរបស់ប្រជាកសិករ និងចូលរួមអភិវឌ្ឍន៍សេដ្ឋកិច្ចសង្គម។";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +53,8 @@ class _AboutUsState extends State<AboutUs> {
   }
 
   Widget _buildBody() {
+    String fixedText = _aboutUs;
+
     return Container(
       padding: EdgeInsets.all(NumberRes.padding8),
       child: Column(
@@ -55,9 +63,13 @@ class _AboutUsState extends State<AboutUs> {
         children: <Widget>[
           ImageLogo().imageLogo(),
           Container(
-            child: Image.asset(
-              'assets/images/about_rdb.png',
-              fit: BoxFit.contain,
+            child: Text(
+              fixedText,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16
+              ),
             ),
           ),
           Row(
