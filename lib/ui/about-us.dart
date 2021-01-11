@@ -53,8 +53,6 @@ class _AboutUsState extends State<AboutUs> {
   }
 
   Widget _buildBody() {
-    String fixedText = _aboutUs;
-
     return Container(
       padding: EdgeInsets.all(NumberRes.padding8),
       child: Column(
@@ -64,7 +62,7 @@ class _AboutUsState extends State<AboutUs> {
           ImageLogo().imageLogo(),
           Container(
             child: Text(
-              fixedText,
+              _aboutUs,
               textAlign: TextAlign.justify,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
