@@ -6,9 +6,6 @@ class ImageLogo{
 	Widget imageLogo(){
 		return Image.asset(
 			'assets/images/rdb_logo.png',
-      fit: BoxFit.cover,
-      width: 240,
-      height: 240,
 		);
 	}
 }
